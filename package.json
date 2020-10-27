@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.config.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -16,6 +16,7 @@
     "@angular/compiler": "~10.0.6",
     "@angular/core": "~10.0.6",
     "@angular/forms": "~10.0.6",
+    "@angular/http": "^7.2.16",
     "@angular/platform-browser": "~10.0.6",
     "@angular/platform-browser-dynamic": "~10.0.6",
     "@angular/router": "~10.0.6",
