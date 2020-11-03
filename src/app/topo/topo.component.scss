@@ -4,12 +4,6 @@ background: linear-gradient(50deg,#151515,#0080FF);
 .row{
  flex-wrap: nowrap;
 }
-.header{
-    width: 100% ;
-    height: 380px;
-    // background-color:#0080FF;
-    background: linear-gradient(50deg,#151515,#0080FF);
-}
 
 .divisor {
 	width: 1px;
@@ -17,49 +11,3 @@ background: linear-gradient(50deg,#151515,#0080FF);
 	margin: 12px 15px;
 }
 
-.buscar{
-    display:flex;
-    flex-direction: column;
-    max-width: 500px;
-    margin: 0 auto;
-    padding-top: 90px;
-    h1{
-      padding-bottom: 10px;
-      color: #fff;
-      text-align: center;
-    }
-}
-
-  .input-group.md-form.form-sm.form-2 input {
-    border: 1px solid #bdbdbd;
-    border-top-left-radius: 0.25rem;
-    border-bottom-left-radius: 0.25rem;
-  }
- 
-
-.menu{
- padding-top: 20px;
-ul{
-  text-align: center;
-   a {
-    color: #fff;
-  }
-}
- i{
-    font-size: 30px;
-    color: #fff;
-  }
-
-}
-
-li a {
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-}
-
-@media (max-width:600px){
-  .menu{
-    display:none;
-  }
-}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-topo',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./topo.component.scss']
 })
 export class TopoComponent implements OnInit {
-
+@Input() rotaLink;
   constructor() { }
 
   ngOnInit(): void {
