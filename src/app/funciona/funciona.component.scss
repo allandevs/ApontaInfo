@@ -1,0 +1,29 @@
+.apontaInfo {
+  font-size: 20px;
+  font-weight: 500;
+}
+.card {
+  margin: 10px 0;
+  padding: 20px;
+  background: #22abdf;
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .apontaInfo {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  h3 {
+    font-size: 20px;
+  }
+  .card {
+    padding: 2px;
+    h3 {
+      font-size: 20px;
+    }
+    span{
+        font-size: 15px;
+    }
+  }
+}
