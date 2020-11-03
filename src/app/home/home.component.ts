@@ -12,6 +12,8 @@ import { Produtos} from '../shared/produtos.model'
 })
 export class HomeComponent implements OnInit {
   
+  public ofertas: Oferta[]
+
   product: Produtos = {
     title: 'teclado dell bom',
     description: 'acho que vai',
@@ -22,10 +24,14 @@ export class HomeComponent implements OnInit {
   constructor( private ofertasService: OfertasService, private http : HttpClient ) { }
 
   ngOnInit(): void {
-   this.criarProduto()
-   this.listarTodosProdutos()
+  //  this.criarProduto()
+  //  this.listarTodosProdutos()
+  this.ofertas =  this.ofertasService.getOfertas()
   }
   
+  
+
+
   criarProduto(){
     this.ofertasService.criarProduto(this.product).subscribe((res)=>{
       return console.log(res)

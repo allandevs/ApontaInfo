@@ -1,5 +1,7 @@
+<app-topo></app-topo>
+<app-header></app-header>
+<app-banner></app-banner>
 <div class="container">
-  
     <div class="secao">
       <h3 class="text-center">Destaques do dia!</h3>
       <h5 class="text-center">Aproveite as super ofertas que separamos para você:</h5>
@@ -8,9 +10,22 @@
     <hr />
   
     <div class="row" >
+      <div class="col-sm-4 mb-2" *ngFor = " let  oferta of ofertas">
+        <div class="card">
+          <img class="card-img-top" [src]="oferta.imagens[0].url">
+          <div class="card-block">
+            <h4 class="card-title">{{oferta.titulo}}</h4>
+            <p class="card-text">{{oferta.descricao_oferta}}</p>
+            <p class="preco">R$ {{oferta.valor}}</p>
+            <p>{{oferta.anunciante}}</p>
+            <a href="#" class="btn btn-outline-primary">Ver oferta</a>
+          </div>
+        </div>
+      </div>
+      <!-- <router-outlet></router-outlet> -->
+    <!-- <div class="row" >
       <div class="col-sm-4 mb-2" *ngFor="let produto of produtos">
         <div class="card">
-          <!-- <img  class="card-img-top" [src]="oferta.imagens[0].url"> -->
           <div class="card-block">
             <h4 class="card-title">{{produto.title}}</h4>
             <p class="card-text">{{produto.description}}</p>
@@ -20,6 +35,8 @@
         </div>
       </div>
     <hr />
-<!-- <button (click)="excluirProduto()">DELETE</button> -->
   </div>
-  
+   -->
+ </div>
+ </div>
+ <app-rodape></app-rodape>
