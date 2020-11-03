@@ -1,0 +1,22 @@
+.container {
+  max-width: 500px;
+  padding: 20px;
+  h1 {
+    color: #585858;
+    text-align: center;
+  }
+  label {
+    color: #585858;
+  }
+  p {
+    font-size: 20px;
+    color: #848484;
+  }
+  .btn-senha {
+    color: #585858;
+    background: none;
+    border: none;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+}
