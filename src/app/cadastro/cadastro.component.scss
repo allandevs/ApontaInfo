@@ -1,0 +1,32 @@
+.container {
+  max-width: 600px;
+  padding: 10px 5px;
+  h1{
+      color:#FF0000;
+      text-align: center;
+      text-transform: uppercase;
+  }
+  @media (max-width:600px){
+  h1{
+    font-size: 25px;
+  }
+  }
+  label {
+    color: #585858;
+  }
+  p {
+    font-size: 20px;
+    color: #848484;
+  }
+}
+
+button{
+  margin:10px;
+}
+@media (max-width: 600px) {
+  .container {
+    p {
+      font-size: 15px;
+    }
+  }
+}
