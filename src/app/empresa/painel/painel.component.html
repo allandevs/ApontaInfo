@@ -1,0 +1,235 @@
+<nav class="navbar navbar-expand-md navbar-light navbar-transparente">
+    <div class="container">
+      
+      <a class="navbar-brand">
+        <img src="assets/logo.png" width="142">
+      </a>
+  
+      <div style="display: flex; flex-direction: column;">
+        <ul class="navbar-nav">
+          <li>
+           <span>Bem vindo, <strong>Info Brasil</strong></span>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+         <li>
+         <a href=""> <span>Sair</span></a>
+        </li>
+        </ul>
+      </div>
+  
+    </div>
+  </nav>
+<div class="container">
+    <div>
+        <div class="header">
+            <h4>Meus Anúncios</h4>
+        </div>
+
+        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#novoProduto">Novo Produto</button>
+
+        <table class="table table-striped responsive-table">
+            <thead>
+              <tr>
+                <th scope="col">Nome do Produto</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Preço</th>
+                <th scope="col">Ferramentas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor = " let  oferta of ofertas">
+                <td>{{oferta.titulo}}</td>
+                <td>{{oferta.descricao_oferta}}</td>
+                <td>{{oferta.valor}}</td>
+                <td> 
+                    <div class="btn-ferramentas">
+                    <button type="button" data-toggle="modal" data-target="#editarProduto"><i class="fas fa-edit"></i> </button>
+                    <button type="button" data-toggle="modal" data-target="#excluirProduto"><i class="fas fa-trash-alt"></i></button> 
+                    </div>
+                    
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+<!-- Dados da empresa -->
+<section>
+<div class="card empresa">
+  <div class="header">
+  <h4>Informações Empresa</h4>
+  </div>
+  <div>
+ <label for="">Nome da Empresa:</label>
+   <span> Info Brasil Comércio de Eletrônicos LTDA </span>
+ </div>
+ <div>
+  <label for="">Cnpj:</label>
+    <span> XX. XXX. XXX/XXXX-XX </span>
+  </div>
+  <div>
+    <label for="">Email:</label>
+      <span> infobrasil@gmail.com</span>
+  </div>
+  <div>
+    <label for="">Telefone:</label>
+      <span> (21)3155-1213 </span>
+  </div>
+  <div>
+    <label for="">Tipo de conta:</label>
+      <span> Free </span>
+  </div>
+  <div>
+    <label for="">Limite de produtos:</label>
+      <span> Máximo 5 produtos </span>
+  </div>
+</div>
+
+<div class="card empresa">
+  <div class="header">
+  <h4>Informações Aponta</h4>
+  </div>
+  <div>
+ <label for="">Migração de Plano:</label>
+   <span> Altere seu plano, saiba mais e aproveite as vantagens</span>
+ </div>
+ <div>
+  <label for="">Plano start:</label>
+    <span> limite produtos 10 </span>
+  </div>
+  <div>
+    <label for="">Plano plus:</label>
+      <span> limite produtos 15</span>
+  </div>
+  <div>
+    <label for="">Plano super:</label>
+      <span> limite produtos 30 </span>
+  </div>
+  <div>
+    <label for="">plano max </label>
+      <span> limite produtos 60 </span>
+  </div>
+  <div>
+    <label for="">Saiba mais:</label>
+      <span> clique aqui </span>
+  </div>
+</div>
+</section>
+<!-- Modal  cadastro de produto-->
+
+<div class="modal fade bd-example-modal-lg" id="novoProduto" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered bmodal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Inserir novo Produto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Categoria</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option>Selecione</option>
+            <option>Computadores</option>
+            <option>Celulares</option>
+            <option>Games</option>
+            <option>Câmeras</option>
+            <option>Som</option>
+          </select>
+        </div>
+        <label for="">Título</label>
+          <div class="form-group">
+              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Ex Notebook Lenovo Ideapad S145">
+              <small id="emailHelp" class="form-text text-muted"></small>
+          </div>
+          <label for="desc">Descrição</label>
+          <div class="form-group">
+              <input type="text" class="form-control" id="desc"  placeholder="Ex Notebook Lenovo Ideapad S145, Intel Core i5-8265U 8GB, 1TB, Placa de Vídeo NVIDIA GeForce">
+              <small id="emailHelp" class="form-text text-muted"></small>
+          </div>
+          <label for="preco">Preço</label>
+          <div class="form-group">
+              <input type="text" class="form-control" id="preco"  placeholder="Ex 3779.90">
+              <small id="emailHelp" class="form-text text-muted"></small>
+          </div>
+          <label for="preco">Imagem</label>
+          <div>
+              <input type="file" class="" id="imagem">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Cadastrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal excluir produto -->
+<div class="modal fade" id="excluirProduto" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Tem certeza que deseja excluir o produto?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <!-- <span aria-hidden="true">&times;</span> -->
+        </button>
+      </div>
+      <!-- <div class="modal-body">
+         <span></span>
+      </div> -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger">Sim</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- modal editar produto -->
+
+<div class="modal fade bd-example-modal-lg" id="editarProduto" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered bmodal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Editar Produto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Categoria</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option>Selecione</option>
+            <option>Computadores</option>
+            <option>Celulares</option>
+            <option>Games</option>
+            <option>Câmeras</option>
+            <option>Som</option>
+          </select>
+        </div>
+        <label for="">Título</label>
+          <div class="form-group">
+              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+              <small id="emailHelp" class="form-text text-muted"></small>
+          </div>
+          <label for="desc">Descrição</label>
+          <div class="form-group">
+              <input type="text" class="form-control" id="desc"  placeholder="">
+              <small id="emailHelp" class="form-text text-muted"></small>
+          </div>
+          <label for="preco">Preço</label>
+          <div class="form-group">
+              <input type="text" class="form-control" id="preco"  placeholder="">
+              <small id="emailHelp" class="form-text text-muted"></small>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Editar</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
