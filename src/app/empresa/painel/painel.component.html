@@ -25,7 +25,6 @@
         <div class="header">
             <h4>Meus Anúncios</h4>
         </div>
-
         <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#novoProduto">Novo Produto</button>
 
         <table class="table table-striped responsive-table">
@@ -38,19 +37,20 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor = " let  oferta of ofertas">
-                <td>{{oferta.titulo}}</td>
-                <td>{{oferta.descricao_oferta}}</td>
-                <td>{{oferta.valor}}</td>
+              <tr *ngFor=" let produto of produtos">
+                <td>{{produto.title}}</td>
+                <td>{{produto.description}}</td>
+                <td>{{produto.price}}</td>
                 <td> 
                     <div class="btn-ferramentas">
-                    <button type="button" data-toggle="modal" data-target="#editarProduto"><i class="fas fa-edit"></i> </button>
-                    <button type="button" data-toggle="modal" data-target="#excluirProduto"><i class="fas fa-trash-alt"></i></button> 
+                    <button type="button" data-toggle="modal" data-target="#editarProduto" (click)="editarProduto(produto)"><i class="fas fa-edit"></i> </button>
+                    <button type="button" data-toggle="modal" data-target="#excluirProduto" (click)="deletarProduto(produto._id, produto.title)"><i class="fas fa-trash-alt"></i></button> 
                     </div>
                     
                 </td>
               </tr>
             </tbody>
+            <span *ngIf="produtos.length === 0">Sem produtos</span>
           </table>
     </div>
 <!-- Dados da empresa -->
@@ -126,13 +126,13 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <form [formGroup]="formProdutos">
       <div class="modal-body">
         <div class="form-group">
           <label for="exampleFormControlSelect1">Categoria</label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>Selecione</option>
-            <option>Computadores</option>
-            <option>Celulares</option>
+          <select class="form-control" formControlName="category">
+            <option value="Computadores">Computadores</option>
+            <option value="Celulares">Celulares</option>
             <option>Games</option>
             <option>Câmeras</option>
             <option>Som</option>
@@ -140,17 +140,17 @@
         </div>
         <label for="">Título</label>
           <div class="form-group">
-              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Ex Notebook Lenovo Ideapad S145">
+              <input type="text" class="form-control"  placeholder="Ex Notebook Lenovo Ideapad S145" formControlName="title">
               <small id="emailHelp" class="form-text text-muted"></small>
           </div>
           <label for="desc">Descrição</label>
           <div class="form-group">
-              <input type="text" class="form-control" id="desc"  placeholder="Ex Notebook Lenovo Ideapad S145, Intel Core i5-8265U 8GB, 1TB, Placa de Vídeo NVIDIA GeForce">
+              <input type="text" class="form-control" id="desc"  placeholder="Ex Notebook Lenovo Ideapad S145, Intel Core i5-8265U 8GB, 1TB, Placa de Vídeo NVIDIA GeForce" formControlName="description">
               <small id="emailHelp" class="form-text text-muted"></small>
           </div>
           <label for="preco">Preço</label>
           <div class="form-group">
-              <input type="text" class="form-control" id="preco"  placeholder="Ex 3779.90">
+              <input type="text" class="form-control" id="preco"  placeholder="Ex 3779.90" formControlName="price">
               <small id="emailHelp" class="form-text text-muted"></small>
           </div>
           <label for="preco">Imagem</label>
@@ -160,8 +160,9 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Cadastrar</button>
+        <button type="button" class="btn btn-primary" (click)="cadastrarProduto()" data-dismiss="modal"  [disabled]="!formProdutos.valid">Cadastrar</button>
       </div>
+    </form>
     </div>
   </div>
 </div>
@@ -171,7 +172,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Tem certeza que deseja excluir o produto?</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Tem certeza que deseja excluir o produto {{ nomeProduto }}?</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <!-- <span aria-hidden="true">&times;</span> -->
         </button>
@@ -181,7 +182,7 @@
       </div> -->
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-danger">Sim</button>
+        <button type="button" class="btn btn-danger" (click)="confirmar()" data-dismiss="modal">Sim</button>
       </div>
     </div>
   </div>
@@ -197,11 +198,11 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <form [formGroup]="formProdutosEdit">
       <div class="modal-body">
         <div class="form-group">
           <label for="exampleFormControlSelect1">Categoria</label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>Selecione</option>
+          <select class="form-control" formControlName="category">
             <option>Computadores</option>
             <option>Celulares</option>
             <option>Games</option>
@@ -211,24 +212,25 @@
         </div>
         <label for="">Título</label>
           <div class="form-group">
-              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+              <input type="text" class="form-control"  formControlName="title">
               <small id="emailHelp" class="form-text text-muted"></small>
           </div>
           <label for="desc">Descrição</label>
           <div class="form-group">
-              <input type="text" class="form-control" id="desc"  placeholder="">
+              <input type="text" class="form-control" id="desc"  formControlName="description" >
               <small id="emailHelp" class="form-text text-muted"></small>
           </div>
           <label for="preco">Preço</label>
           <div class="form-group">
-              <input type="text" class="form-control" id="preco"  placeholder="">
+              <input type="text" class="form-control" id="preco"  formControlName="price">
               <small id="emailHelp" class="form-text text-muted"></small>
           </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Editar</button>
+        <button type="button" class="btn btn-primary" (click)="atualizarProduto()" data-dismiss="modal" [disabled]="!formProdutosEdit.valid">Editar</button>
       </div>
+    </form>
     </div>
   </div>
 </div>

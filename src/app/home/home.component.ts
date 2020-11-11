@@ -1,8 +1,10 @@
+// import { ProdutosService } from './../produtos.service';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { OfertasService } from '../ofertas.service'
 import { Oferta } from '../shared/oferta.model'
 import { Produtos} from '../shared/produtos.model'
+import { ProdutosService } from '../produtos.service'
 
 @Component({
   selector: 'app-home',
@@ -15,13 +17,13 @@ export class HomeComponent implements OnInit {
   public ofertas: Oferta[]
 
   product: Produtos = {
-    title: 'teclado dell bom',
+    title: 'mouse dell bom',
     description: 'acho que vai',
-    slug: 'testeInfovsdds',
+    slug: 'testeInfovsssdds',
     price: 1251
   }
  produtos ;
-  constructor( private ofertasService: OfertasService, private http : HttpClient ) { }
+  constructor( private ofertasService: OfertasService, private sevProdutos: ProdutosService,  private http : HttpClient ) { }
 
   ngOnInit(): void {
   //  this.criarProduto()
@@ -30,13 +32,13 @@ export class HomeComponent implements OnInit {
   }
   
   
-
-
   criarProduto(){
-    this.ofertasService.criarProduto(this.product).subscribe((res)=>{
+    this.sevProdutos.criarProduto(this.product).subscribe((res) => {
       return console.log(res)
     })
+      
   }
+
 
   listarTodosProdutos() {
     this.ofertasService.getProdutos().subscribe((res) => {
