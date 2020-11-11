@@ -14,7 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { PainelComponent } from './empresa/painel/painel.component';
 import { HeaderComponent } from './header/header.component';
 import { FuncionaComponent } from './funciona/funciona.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
@@ -35,6 +35,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     AppRoutingModule,
     HttpClientModule,
     HttpModule,
+    FormsModule,
+    ReactiveFormsModule,
     NgxMaskModule.forRoot(),
   ],
   providers: [],
