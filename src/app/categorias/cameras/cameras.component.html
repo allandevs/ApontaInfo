@@ -1,0 +1,17 @@
+<div class="container">
+    
+    <div class="row" >
+        <div class="col-sm-4 mb-2" *ngFor="let produto of produtos">
+        <div class="card">
+            <!-- <img class="card-img-top" [src]="oferta.imagens[0].url"> -->
+            <div class="card-block">
+            <h4 class="card-title">{{produto.title}}</h4>
+            <p class="card-text">{{produto.description}}</p>
+            <p class="preco">R$ {{produto.price}}</p>
+            <a href="#" class="btn btn-outline-primary">Saiba Mais</a>
+            </div>
+        </div>
+        </div>
+    </div>
+
+</div>  
