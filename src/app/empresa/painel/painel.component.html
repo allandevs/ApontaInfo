@@ -133,9 +133,9 @@
           <select class="form-control" formControlName="category">
             <option value="Computadores">Computadores</option>
             <option value="Celulares">Celulares</option>
-            <option>Games</option>
-            <option>Câmeras</option>
-            <option>Som</option>
+            <option value="Games">Games</option>
+            <option value="Cameras">Câmeras</option>
+            <option value="Som">Som</option>
           </select>
         </div>
         <label for="">Título</label>
@@ -150,7 +150,7 @@
           </div>
           <label for="preco">Preço</label>
           <div class="form-group">
-              <input type="text" class="form-control" id="preco"  placeholder="Ex 3779.90" formControlName="price">
+              <input type="number" class="form-control" id="preco"  placeholder="Ex 3779.90" formControlName="price">
               <small id="emailHelp" class="form-text text-muted"></small>
           </div>
           <label for="preco">Imagem</label>
@@ -160,7 +160,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" (click)="cadastrarProduto()" data-dismiss="modal"  [disabled]="!formProdutos.valid">Cadastrar</button>
+        <button type="button" class="btn btn-primary" (click)="cadastrarProduto()" data-dismiss="modal">Cadastrar</button>
       </div>
     </form>
     </div>
@@ -203,11 +203,11 @@
         <div class="form-group">
           <label for="exampleFormControlSelect1">Categoria</label>
           <select class="form-control" formControlName="category">
-            <option>Computadores</option>
-            <option>Celulares</option>
-            <option>Games</option>
-            <option>Câmeras</option>
-            <option>Som</option>
+            <option value="Computadores">Computadores</option>
+            <option value="Celulares">Celulares</option>
+            <option value="Games">Games</option>
+            <option value="Cameras">Câmeras</option>
+            <option value="Som">Som</option>
           </select>
         </div>
         <label for="">Título</label>
@@ -222,7 +222,7 @@
           </div>
           <label for="preco">Preço</label>
           <div class="form-group">
-              <input type="text" class="form-control" id="preco"  formControlName="price">
+              <input type="number" class="form-control" id="preco"  formControlName="price">
               <small id="emailHelp" class="form-text text-muted"></small>
           </div>
       </div>

@@ -52,6 +52,7 @@ export class PainelComponent implements OnInit {
     this.sevProdutos.criarProduto(this.formProdutos.value).subscribe(
       (res: any) => {
         this.getProdutos()
+        this.sevProdutos.showMessage('Produto Criado com sucesso!')
       }
       )
     this.formProdutos = this.formBuilder.group({
@@ -73,6 +74,7 @@ export class PainelComponent implements OnInit {
     this.sevProdutos.editarProduto(this.data._id, this.formProdutosEdit.value).subscribe(
       (res: any ) => {
         this.getProdutos()
+        this.sevProdutos.showMessage('Produto atualizado com sucesso!')
       })
   }
 
@@ -85,6 +87,7 @@ export class PainelComponent implements OnInit {
     this.sevProdutos.deletarProduto(this.idProdutoDelete).subscribe(
       (res)=> {
         this.getProdutos()
+        this.sevProdutos.showMessage('Produto deletado com sucesso!')
     })
   }
 

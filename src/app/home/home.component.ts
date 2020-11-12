@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
     price: 1251
   }
  produtos ;
+ produtosCategoria
   constructor( private ofertasService: OfertasService, private sevProdutos: ProdutosService,  private http : HttpClient ) { }
 
   ngOnInit(): void {
@@ -55,5 +56,10 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  getProdutosCategoria(){
+    this.sevProdutos.getProdutoCategoria('Computadores').subscribe((res) =>{
+     console.log(res)
+    })
+  }
  
 }

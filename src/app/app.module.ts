@@ -15,6 +15,15 @@ import { PainelComponent } from './empresa/painel/painel.component';
 import { HeaderComponent } from './header/header.component';
 import { FuncionaComponent } from './funciona/funciona.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ComputadoresComponent } from './categorias/computadores/computadores.component';
+import { ConteudoComponent } from './conteudo/conteudo.component';
+import { CelularesComponent } from './categorias/celulares/celulares.component';
+import { GamesComponent } from './categorias/games/games.component';
+import { CamerasComponent } from './categorias/cameras/cameras.component';
+import { SomComponent } from './categorias/som/som.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
@@ -28,7 +37,13 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     LoginComponent,
     PainelComponent,
     HeaderComponent,
-    FuncionaComponent
+    FuncionaComponent,
+    ComputadoresComponent,
+    ConteudoComponent,
+    CelularesComponent,
+    GamesComponent,
+    CamerasComponent,
+    SomComponent
   ],
   imports: [
     BrowserModule,
@@ -36,8 +51,10 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     HttpClientModule,
     HttpModule,
     FormsModule,
+    MatSnackBarModule,
     ReactiveFormsModule,
     NgxMaskModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
