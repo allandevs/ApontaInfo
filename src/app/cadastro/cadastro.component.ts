@@ -31,7 +31,7 @@ export class CadastroComponent implements OnInit {
       cep: ['', Validators.required],
       telefone: ['', Validators.required],
       email: ['', Validators.required],
-      password:[, Validators.required],
+      password:['', Validators.required],
 
     });
   }
