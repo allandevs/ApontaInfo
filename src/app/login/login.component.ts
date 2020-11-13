@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth.service'
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProdutosService } from '../produtos.service'
+import {SuporteService } from '../suporte.service'
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { ProdutosService } from '../produtos.service'
 })
 export class LoginComponent implements OnInit {
   formLogin: any;
-  constructor( public router: Router, public authService: AuthService,private formBuilder: FormBuilder,public sevProdutos: ProdutosService) { }
+  constructor( public router: Router, public authService: AuthService,private formBuilder: FormBuilder,public suporte:SuporteService) { }
 
   ngOnInit(): void {
     
@@ -30,7 +31,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('userLogged', JSON.stringify(usuarioLogado.data));
      this.router.navigate(['painel']);
   },(error) => {
-    this.sevProdutos.showMessageErro('E-mail e/ou senha inválidos')
+    this.suporte.showMessageErro('E-mail e/ou senha inválidos')
   })
 
  }

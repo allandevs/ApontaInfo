@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OfertasService } from '../../ofertas.service'
 import { Oferta } from '../../shared/oferta.model'
 import { ProdutosService } from '../../produtos.service'
+import {SuporteService } from '../../suporte.service'
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -28,7 +29,7 @@ export class PainelComponent implements OnInit {
  
  dadosUsuario = JSON.parse(localStorage.getItem('userLogged'));
  
-  constructor(private ofertasService: OfertasService,private sevProdutos: ProdutosService,private formBuilder: FormBuilder,public router: Router) { }
+  constructor(private suporte: SuporteService, private sevProdutos: ProdutosService,private formBuilder: FormBuilder,public router: Router) { }
 
   ngOnInit(): void {
     this.iniciarFormProdutosEdit()
@@ -62,13 +63,13 @@ export class PainelComponent implements OnInit {
    if(this.produtos.length < 5){
     this.sevProdutos.criarProduto(this.formProdutos.value).subscribe(
       (res: any) => {
-        this.sevProdutos.showMessage('Produto Criado com sucesso!')
+        this.suporte.showMessage('Produto Criado com sucesso!')
         this.getProdutos()
       }
       )
 
    } else {
-    this.sevProdutos.showMessageErro('OPS você excedeu seu limite de produtos!')
+    this.suporte.showMessageErro('OPS você excedeu seu limite de produtos!')
    }
    this.formProdutos = this.formBuilder.group({
     customer: [this.dadosUsuario.id],
@@ -90,7 +91,7 @@ export class PainelComponent implements OnInit {
     this.sevProdutos.editarProduto(this.data._id, this.formProdutosEdit.value).subscribe(
       (res: any ) => {
         this.getProdutos()
-        this.sevProdutos.showMessage('Produto atualizado com sucesso!')
+        this.suporte.showMessage('Produto atualizado com sucesso!')
       })
   }
 
@@ -103,7 +104,7 @@ export class PainelComponent implements OnInit {
     this.sevProdutos.deletarProduto(this.idProdutoDelete).subscribe(
       (res)=> {
         this.getProdutos()
-        this.sevProdutos.showMessage('Produto deletado com sucesso!')
+        this.suporte.showMessage('Produto deletado com sucesso!')
     })
   }
 
@@ -120,8 +121,8 @@ export class PainelComponent implements OnInit {
    let reader = new FileReader();
    reader.readAsDataURL(this.imagem);
    reader.onload = function () {
-    this.file = reader.result
-    console.log(this.file)
+    // this.file = reader.result
+    // console.log(this.file)
    };
    reader.onerror = function (error) {
      console.log('Error: ', error);

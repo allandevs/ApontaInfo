@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { global} from './shared/global'
 
 @Injectable({
@@ -9,28 +8,11 @@ import { global} from './shared/global'
 })
 export class ProdutosService extends BaseService {
 
-  constructor(http : HttpClient,private snackBar: MatSnackBar) {
+  constructor(http : HttpClient) {
     super(http)
    }
 
-   showMessage(msg: string, isError: boolean = false){
-    this.snackBar.open(msg,'x',{
-      duration:3000,
-      horizontalPosition:"center",
-      verticalPosition:"top",
-      // panelClass: isError ?  ['msg-error'] : ['msg-sucess'],
-      panelClass: ['snackbar']
-    })
-  }
-  showMessageErro(msg: string, isError: boolean = false){
-    this.snackBar.open(msg,'x',{
-      duration:3000,
-      horizontalPosition:"center",
-      verticalPosition:"top",
-      // panelClass: isError ?  ['msg-error'] : ['msg-sucess'],
-      panelClass: ['snackbarRed']
-    })
-  }
+
    criarProduto(obj){
     return this.post(`products`,obj)
    }

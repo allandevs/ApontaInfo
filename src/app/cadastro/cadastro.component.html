@@ -11,45 +11,45 @@
     <h1>Atenção</h1>
 <p>Esta área é para pequenas empresas de eletrônicos, se cadastrarem de forma que possam anunciar seus produtos.
 Os cadastros só serão liberados após validação da administração do ApontaInfo em até 48 horas.</p>
-<form>
+<form [formGroup]="formCadastro">
     <div class="form-group">
         <label for="nomeEmpresa">Nome da Empresa Razão Social</label>
-        <input type="text" class="form-control" id="nomeEmpresa" required="required" aria-describedby="emailHelp" placeholder="">
+        <input type="text" class="form-control" id="nomeEmpresa" required="required" formControlName="name" placeholder="">
         <small id="nomeEmpresa" class="form-text text-muted">Nunca invente ou seu cadastro será cancelado</small>
       </div>
       <div class="form-group">
         <label for="nomeFantasia">Nome Fantasia</label>
-        <input type="text" class="form-control" id="nomeFantasia" required="required" placeholder="">
+        <input type="text" class="form-control" id="nomeFantasia" required="required" formControlName="nameFantasia" placeholder="">
         <small id="nomeFantasia" class="form-text text-muted"></small>
       </div>
       <div class="form-group">
         <label for="cnpj">Cnpj</label>
-        <input  class="form-control" id="cnpj" mask="00.000.000/0000-00">
+        <input type="text" class="form-control" id="cnpj" mask="00.000.000/0000-00" formControlName="cnpj">
         <small id="cnpj" class="form-text text-muted">Preencha correntamente, digite somente números</small>
       </div>
       <div class="form-group">
         <label for="endereco">Endereço</label>
-        <input type="texto" class="form-control" id="endereco"  placeholder="  Ex Estrada do rio, 495">
+        <input type="text" class="form-control" id="endereco"  placeholder="  Ex Estrada do rio, 495" formControlName="endereco">
         <small id="endereco" class="form-text text-muted">Coloque endereço correntamente, pois vamos compartilhar</small>
       </div>
       <div class="form-group">
         <label for="endComplemento">Complemento</label>
-        <input type="texto" class="form-control" id="endComplemento"  placeholder=" Ex loja 7c">
+        <input type="text" class="form-control" id="endComplemento"  placeholder=" Ex loja 7c" formControlName="complemento">
         <small id="endComplemento" class="form-text text-muted"></small>
       </div>
       <div class="form-group">
         <label for="bairro">Bairro</label>
-        <input type="texto" class="form-control" id="exampleInputEmail1"  placeholder="">
+        <input type="text" class="form-control" placeholder="" formControlName="bairro">
         <small id="bairro" class="form-text text-muted"></small>
       </div>
       <div class="form-group">
         <label for="exampleInputEmail1">Cidade</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder=" Ex Rio de Janeiro">
+        <input type="text" class="form-control"   placeholder=" Ex Rio de Janeiro">
         <small id="emailHelp" class="form-text text-muted"></small>
       </div>
       <div class="form-group">
         <label for="exampleFormControlSelect1">Estado</label>
-        <select class="form-control" id="exampleFormControlSelect1">
+        <select class="form-control" formControlName="estado" >
           <option>Selecione</option>
           <option>RJ</option>
           <option>SP</option>
@@ -59,23 +59,23 @@ Os cadastros só serão liberados após validação da administração do Aponta
       </div>
       <div class="form-group">
         <label for="cep">Cep</label>
-        <input  class="form-control" mask="00000-000"id="cep">
+        <input  type="text" class="form-control" mask="00000-000"id="cep" formControlName="cep">
         <small id="cep" class="form-text text-muted"></small>
       </div>  
       <div class="form-group">
         <label >Telefone</label>
-        <input class="form-control"  mask="(00) 00000-0000">
+        <input class="form-control" type="text" mask="(00) 00000-0000" formControlName="telefone">
       </div>  
     <div class="form-group">
       <label for="exampleInputEmail1">Endereço de email</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Seu email">
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Seu email" formControlName="email">
       <small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu email, com ninguém.</small>
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Senha</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha" formControlName="password">
     </div>
-    <button type="submit" class="btn btn-primary">Cadastrar</button>
+    <button type="submit" class="btn btn-primary" (click)="cadastrar()">Cadastrar</button>
     <button routerLink="" class="btn btn-dark">Sair</button>
   </form>
 
