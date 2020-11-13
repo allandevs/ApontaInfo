@@ -8,12 +8,12 @@
       <div style="display: flex; flex-direction: column;">
         <ul class="navbar-nav">
           <li>
-           <span>Bem vindo, <strong>Info Brasil</strong></span>
+           <span>Bem vindo, <strong>{{dadosUsuario.name}}</strong></span>
           </li>
         </ul>
         <ul class="navbar-nav">
          <li>
-         <a href=""> <span>Sair</span></a>
+         <button class="btn btn-dark" (click)="logout()">Sair</button>
         </li>
         </ul>
       </div>
@@ -50,8 +50,10 @@
                 </td>
               </tr>
             </tbody>
-            <span *ngIf="produtos.length === 0">Sem produtos</span>
           </table>
+          <div class="noProdutos" *ngIf="produtos.length === 0">Você ainda não possui produtos cadastrados </div>
+          <div class="limitProdutos" *ngIf="produtos.length == 5 ">Você execedeu limite de produtos permitidos!</div>
+          
     </div>
 <!-- Dados da empresa -->
 <section>
@@ -61,7 +63,7 @@
   </div>
   <div>
  <label for="">Nome da Empresa:</label>
-   <span> Info Brasil Comércio de Eletrônicos LTDA </span>
+   <span> {{dadosUsuario.name }}</span>
  </div>
  <div>
   <label for="">Cnpj:</label>
@@ -69,7 +71,7 @@
   </div>
   <div>
     <label for="">Email:</label>
-      <span> infobrasil@gmail.com</span>
+      <span> {{dadosUsuario.email}}</span>
   </div>
   <div>
     <label for="">Telefone:</label>

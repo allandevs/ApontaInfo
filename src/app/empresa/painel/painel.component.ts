@@ -3,6 +3,8 @@ import { OfertasService } from '../../ofertas.service'
 import { Oferta } from '../../shared/oferta.model'
 import { ProdutosService } from '../../produtos.service'
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
 
 
 
@@ -20,18 +22,19 @@ export class PainelComponent implements OnInit {
  idProdutoDelete
  nomeProduto
  data: any =  []
-  constructor(private ofertasService: OfertasService,private sevProdutos: ProdutosService,private formBuilder: FormBuilder) { }
+ dadosUsuario = JSON.parse(localStorage.getItem('userLogged'));
+ 
+  constructor(private ofertasService: OfertasService,private sevProdutos: ProdutosService,private formBuilder: FormBuilder,public router: Router) { }
 
   ngOnInit(): void {
-    console.log(this.ofertas)
-    this.iniciarFormProdutos()
     this.iniciarFormProdutosEdit()
+    this.iniciarFormProdutos()
     this.getProdutos()
   }
 
-
   iniciarFormProdutos() {
     this.formProdutos = this.formBuilder.group({
+      customer: [this.dadosUsuario.id],
       category: ['',Validators.required],
       title: ['', Validators.required],
       description: ['', Validators.required],
@@ -41,6 +44,7 @@ export class PainelComponent implements OnInit {
 
   iniciarFormProdutosEdit() {
     this.formProdutosEdit = this.formBuilder.group({
+      customer: [this.dadosUsuario.id],
       category: [this.data.category, Validators.required],
       title: [this.data.title, Validators.required],
       description: [this.data.description, Validators.required],
@@ -49,18 +53,24 @@ export class PainelComponent implements OnInit {
   }
 
   cadastrarProduto(){
+   if(this.produtos.length < 5){
     this.sevProdutos.criarProduto(this.formProdutos.value).subscribe(
       (res: any) => {
-        this.getProdutos()
         this.sevProdutos.showMessage('Produto Criado com sucesso!')
+        this.getProdutos()
       }
       )
-    this.formProdutos = this.formBuilder.group({
-      category: ['', Validators.required],
-      title: ['', Validators.required],
-      description: ['', Validators.required],
-      price: ['', Validators.required],
-    });
+
+   } else {
+    this.sevProdutos.showMessageErro('OPS você excedeu seu limite de produtos!')
+   }
+   this.formProdutos = this.formBuilder.group({
+    customer: [this.dadosUsuario.id],
+    category: ['', Validators.required],
+    title: ['', Validators.required],
+    description: ['', Validators.required],
+    price: ['', Validators.required],
+  });
   }
 
 
@@ -92,9 +102,17 @@ export class PainelComponent implements OnInit {
   }
 
   getProdutos(){
-    this.sevProdutos.getProdutos().subscribe((res)=>{
+
+     console.log(this.dadosUsuario)
+    this.sevProdutos.getProdutoCustomer(this.dadosUsuario.id).subscribe((res)=>{
     this.produtos = res
-    console.log(this.produtos)
+    console.log(this.produtos.length)
     })
   }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/login']);
+  }
+
 }

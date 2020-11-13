@@ -22,7 +22,15 @@ export class ProdutosService extends BaseService {
       panelClass: ['snackbar']
     })
   }
-
+  showMessageErro(msg: string, isError: boolean = false){
+    this.snackBar.open(msg,'x',{
+      duration:3000,
+      horizontalPosition:"center",
+      verticalPosition:"top",
+      // panelClass: isError ?  ['msg-error'] : ['msg-sucess'],
+      panelClass: ['snackbarRed']
+    })
+  }
    criarProduto(obj){
     return this.post(`products`,obj)
    }
@@ -41,6 +49,9 @@ export class ProdutosService extends BaseService {
  
   getProdutoCategoria(categoria){
     return this.get(`products/category/${categoria}`)
+  }
+  getProdutoCustomer(customer){
+    return this.get(`products/customer/${customer}`)
   }
 }
 

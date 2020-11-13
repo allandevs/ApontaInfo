@@ -12,18 +12,18 @@
     <p>Para acessar o sistema é necessário estar cadastrado como nossos parceiros, 
          usuários de buscas não precisam de login de acesso!
     </p>
-    <form>
+    <form [formGroup]="formLogin">
         <div class="form-group">
           <label for="exampleInputEmail1">Endereço de email</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Seu email">
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Seu email" formControlName="email">
           <small id="emailHelp" class="form-text text-muted"></small>
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Senha</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha" formControlName="password">
         </div>
         <a routerLink="../cadastro" class="nav-link">Sou empresa e desejo me cadastrar</a>
-        <button type="button" class="btn btn-primary" (click)="login()">Entrar</button>
+        <button type="button" class="btn btn-primary" (click)="login()" [disabled]="!formLogin.valid">Entrar</button>
         <button class="btn-senha" type="button" data-toggle="modal" data-target="#exampleModalCenter" >Esqueceu a senha?</button>
       </form>
     

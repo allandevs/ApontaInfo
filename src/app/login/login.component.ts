@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service'
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ProdutosService } from '../produtos.service'
 
 @Component({
   selector: 'app-login',
@@ -7,12 +10,29 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
-  constructor( public router: Router,) { }
+  formLogin: any;
+  constructor( public router: Router, public authService: AuthService,private formBuilder: FormBuilder,public sevProdutos: ProdutosService) { }
 
   ngOnInit(): void {
+    
+    this.formLogin = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+    });
+
   }
+
+
  login(){
-  this.router.navigate(['painel']);
+  const objLogin = this.formLogin.value;
+  this.authService.authUsuario(objLogin).subscribe((usuarioLogado) => {
+     console.log(usuarioLogado)
+      localStorage.setItem('userLogged', JSON.stringify(usuarioLogado.data));
+     this.router.navigate(['painel']);
+  },(error) => {
+    this.sevProdutos.showMessageErro('E-mail e/ou senha inválidos')
+  })
+
  }
+
 }
