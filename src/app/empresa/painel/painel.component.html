@@ -157,7 +157,7 @@
           </div>
           <label for="preco">Imagem</label>
           <div>
-              <input type="file" class="" id="imagem">
+              <input type="file" accept="image/*" (change)="prepareUploadPhoto($event)" class="" id="imagem">
           </div>
       </div>
       <div class="modal-footer">

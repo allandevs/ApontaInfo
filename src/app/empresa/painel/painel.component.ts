@@ -22,6 +22,10 @@ export class PainelComponent implements OnInit {
  idProdutoDelete
  nomeProduto
  data: any =  []
+ imagem: File
+ file: any
+ 
+ 
  dadosUsuario = JSON.parse(localStorage.getItem('userLogged'));
  
   constructor(private ofertasService: OfertasService,private sevProdutos: ProdutosService,private formBuilder: FormBuilder,public router: Router) { }
@@ -34,11 +38,13 @@ export class PainelComponent implements OnInit {
 
   iniciarFormProdutos() {
     this.formProdutos = this.formBuilder.group({
+      
       customer: [this.dadosUsuario.id],
       category: ['',Validators.required],
       title: ['', Validators.required],
       description: ['', Validators.required],
       price: ['', Validators.required],
+      image:[this.file, Validators.required],
     });
   }
 
@@ -106,10 +112,21 @@ export class PainelComponent implements OnInit {
      console.log(this.dadosUsuario)
     this.sevProdutos.getProdutoCustomer(this.dadosUsuario.id).subscribe((res)=>{
     this.produtos = res
-    console.log(this.produtos.length)
+    console.log(this.produtos)
     })
   }
-
+  prepareUploadPhoto(event): void {
+    this.imagem = event.target.files[0]
+   let reader = new FileReader();
+   reader.readAsDataURL(this.imagem);
+   reader.onload = function () {
+    this.file = reader.result
+    console.log(this.file)
+   };
+   reader.onerror = function (error) {
+     console.log('Error: ', error);
+   };
+  }
   logout() {
     localStorage.clear();
     this.router.navigate(['/login']);
