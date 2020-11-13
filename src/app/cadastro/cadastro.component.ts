@@ -42,7 +42,9 @@ export class CadastroComponent implements OnInit {
      (result :any ) =>{
       this.suporte.showMessage('Parabéns cadastrado realizado com sucesso!')
       this.router.navigate(['login']);
-   })
+      
+   },(error) => {
+    this.suporte.showMessageErro('HOUVE UM ERRO')})
   }
 
 }

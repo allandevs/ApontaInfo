@@ -8,7 +8,7 @@
       <div style="display: flex; flex-direction: column;">
         <ul class="navbar-nav">
           <li>
-           <span>Bem vindo, <strong>{{dadosUsuario.name}}</strong></span>
+           <span>Bem vindo, <strong>{{dadosUsuario.nameFantasia}}</strong></span>
           </li>
         </ul>
         <ul class="navbar-nav">
@@ -67,7 +67,7 @@
  </div>
  <div>
   <label for="">Cnpj:</label>
-    <span> XX. XXX. XXX/XXXX-XX </span>
+    <span mask="00.000.000/0000-00"> {{dadosUsuario.cnpj }}</span>
   </div>
   <div>
     <label for="">Email:</label>
@@ -75,7 +75,7 @@
   </div>
   <div>
     <label for="">Telefone:</label>
-      <span> (21)3155-1213 </span>
+      <span> {{dadosUsuario.telefone }} </span>
   </div>
   <div>
     <label for="">Tipo de conta:</label>
