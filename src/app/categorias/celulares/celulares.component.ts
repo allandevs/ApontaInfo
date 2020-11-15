@@ -7,9 +7,10 @@ import { ProdutosService } from '../../produtos.service'
   styleUrls: ['./celulares.component.scss']
 })
 export class CelularesComponent implements OnInit {
-  public produtos
   constructor(private sevProdutos: ProdutosService) { }
-
+  public produtos
+  imagemProduto = "../assets/produto-sem-imagem.jpg"
+  dados:any
   ngOnInit(): void {
     this.getProdutosCategoria()
   }
@@ -17,6 +18,17 @@ export class CelularesComponent implements OnInit {
   getProdutosCategoria(){
     this.sevProdutos.getProdutoCategoria('Celulares').subscribe((res) =>{
      this.produtos = res
+     console.log(this.produtos)
     })
+  }
+
+  infoLoja(id){
+    this.sevProdutos.getCustomer(id).subscribe((result) =>{
+      this.dados = result
+    })
+  }
+
+  produtosLoja(id){
+   alert(id)
   }
 }

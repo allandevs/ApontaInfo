@@ -33,5 +33,5 @@ export class BaseService {
       headers: this.header,
     });
   }
-
+  
 }

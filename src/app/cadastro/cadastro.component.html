@@ -24,7 +24,7 @@ Os cadastros serão liberados na hora e nossa equipe poderá fazer uma análise 
       </div>
       <div class="form-group">
         <label for="cnpj">Cnpj</label>
-        <input type="text" class="form-control" id="cnpj" mask="00.000.000/0000-00" formControlName="cnpj">
+        <input type="text" class="form-control" id="cnpj" [(ngModel)]="cnpj" mask="00.000.000/0000-00" formControlName="cnpj">
         <small id="cnpj" class="form-text text-muted">Preencha correntamente, digite somente números</small>
       </div>
       <div class="form-group">

@@ -23,6 +23,7 @@ import { CamerasComponent } from './categorias/cameras/cameras.component';
 import { SomComponent } from './categorias/som/som.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -55,6 +56,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     ReactiveFormsModule,
     NgxMaskModule.forRoot(),
     BrowserAnimationsModule,
+    ImageCropperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

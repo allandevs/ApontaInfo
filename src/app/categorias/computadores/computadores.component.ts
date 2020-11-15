@@ -8,7 +8,8 @@ import { ProdutosService } from '../../produtos.service'
 })
 export class ComputadoresComponent implements OnInit {
 produtos: any = []
-
+imagemProduto = "../assets/produto-sem-imagem.jpg"
+dados:any
   constructor(private sevProdutos: ProdutosService) { }
 
   ngOnInit(): void {
@@ -18,6 +19,13 @@ produtos: any = []
   getProdutosCategoria(){
     this.sevProdutos.getProdutoCategoria('Computadores').subscribe((res) =>{
      this.produtos = res
+     console.log(this.produtos)
+    })
+  }
+
+  infoLoja(id){
+    this.sevProdutos.getCustomer(id).subscribe((result) =>{
+      this.dados = result
     })
   }
 

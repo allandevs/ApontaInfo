@@ -137,4 +137,25 @@ i {
   table.responsive-table.bordered tbody tr {
     border-right: 1px solid #d0d0d0;
   }
+
+}
+
+// .esconder {
+//   display: none;
+// }
+
+input[type="file"] {
+  display: none;
+}
+image-cropper {
+  max-height: 20vh;
+ 
+}
+
+.source-image{
+  visibility: hidden;
+}
+
+.modal-title {
+  font-size: 18px !important;
 }

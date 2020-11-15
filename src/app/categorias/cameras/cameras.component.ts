@@ -8,6 +8,8 @@ import { ProdutosService } from '../../produtos.service'
 export class CamerasComponent implements OnInit {
 
   public produtos
+  imagemProduto = "../assets/produto-sem-imagem.jpg"
+  dados:any;
   constructor(private sevProdutos: ProdutosService) { }
 
   ngOnInit(): void {
@@ -19,4 +21,11 @@ export class CamerasComponent implements OnInit {
      this.produtos = res
     })
   }
+
+  infoLoja(id){
+    this.sevProdutos.getCustomer(id).subscribe((result) =>{
+      this.dados = result
+    })
+  }
+
 }

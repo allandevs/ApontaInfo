@@ -35,6 +35,10 @@ export class ProdutosService extends BaseService {
   getProdutoCustomer(customer){
     return this.get(`products/customer/${customer}`)
   }
+
+  getCustomer(id){
+    return this.get(`customers/${id}`)
+  }
 }
 
 

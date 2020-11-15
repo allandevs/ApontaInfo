@@ -1,3 +1,43 @@
-.container{
-    margin: 15px auto;
+.container {
+  margin: 15px auto;
+}
+h3 {
+  text-align: center;
+}
+label {
+  color: #0080ff;
+  font-size: 20px;
+}
+.title-modal {
+  font-size: 22px;
+  color: #fff !important;
+  text-transform: capitalize;
+}
+.modal-header {
+  background-color: #22abdf;
+}
+
+.img-prod {
+  width: 280px;
+  height: 400px;
+  margin: 0 auto
+}
+.modal-title {
+  font-size: 18px !important;
+  
+}
+
+h3{
+  cursor: pointer;
+}
+
+span{
+  font-size: 17px;
+}
+.capitalize{
+  text-transform: uppercase;
+}
+
+.img-modal{
+  padding: 15px;
 }

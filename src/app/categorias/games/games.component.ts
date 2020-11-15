@@ -8,7 +8,8 @@ import { ProdutosService } from '../../produtos.service'
 export class GamesComponent implements OnInit {
   public produtos
   constructor(private sevProdutos: ProdutosService) { }
-
+  imagemProduto = "../assets/produto-sem-imagem.jpg"
+  dados:any
   ngOnInit(): void {
     this.getProdutosCategoria()
   }
@@ -19,4 +20,9 @@ export class GamesComponent implements OnInit {
     })
   }
 
+  infoLoja(id){
+    this.sevProdutos.getCustomer(id).subscribe((result) =>{
+      this.dados = result
+    })
+  }
 }

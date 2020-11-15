@@ -40,7 +40,7 @@
               <tr *ngFor=" let produto of produtos">
                 <td>{{produto.title}}</td>
                 <td>{{produto.description}}</td>
-                <td>{{produto.price}}</td>
+                <td>{{produto.price | currency: 'BRL'}}</td>
                 <td> 
                     <div class="btn-ferramentas">
                     <button type="button" data-toggle="modal" data-target="#editarProduto" (click)="editarProduto(produto)"><i class="fas fa-edit"></i> </button>
@@ -52,7 +52,7 @@
             </tbody>
           </table>
           <div class="noProdutos" *ngIf="produtos.length === 0">Você ainda não possui produtos cadastrados </div>
-          <div class="limitProdutos" *ngIf="produtos.length == 5 ">Você execedeu limite de produtos permitidos!</div>
+          <div class="limitProdutos" *ngIf="produtos.length == 5 ">Você excedeu limite de produtos permitidos!</div>
           
     </div>
 <!-- Dados da empresa -->
@@ -128,7 +128,14 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form [formGroup]="formProdutos">
+      <div>
+        <label style="margin-left: 20px;">Adicione a imagem do Produto</label> <br>
+        <input hidden #fileInput type="file" accept="image/*" (change)="prepareUploadPhoto($event)" id="imagem" >
+        <button  class="btn btn-dark" (click)="fileInput.click()" >Adicionar Imagem</button>
+        <span *ngIf="formProdutos" >A imagem {{imagem.name}} foi carregada</span>
+      </div>
+      <!-- deois coloco boolean -->
+      <form [formGroup]="formProdutos" *ngIf="formProdutos">
       <div class="modal-body">
         <div class="form-group">
           <label for="exampleFormControlSelect1">Categoria</label>
@@ -143,32 +150,30 @@
         <label for="">Título</label>
           <div class="form-group">
               <input type="text" class="form-control"  placeholder="Ex Notebook Lenovo Ideapad S145" formControlName="title">
-              <small id="emailHelp" class="form-text text-muted"></small>
+              <small  class="form-text text-muted"></small>
           </div>
           <label for="desc">Descrição</label>
           <div class="form-group">
               <input type="text" class="form-control" id="desc"  placeholder="Ex Notebook Lenovo Ideapad S145, Intel Core i5-8265U 8GB, 1TB, Placa de Vídeo NVIDIA GeForce" formControlName="description">
-              <small id="emailHelp" class="form-text text-muted"></small>
+              <small  class="form-text text-muted"></small>
           </div>
           <label for="preco">Preço</label>
           <div class="form-group">
               <input type="number" class="form-control" id="preco"  placeholder="Ex 3779.90" formControlName="price">
-              <small id="emailHelp" class="form-text text-muted"></small>
+              <small  class="form-text text-muted"></small>
           </div>
-          <label for="preco">Imagem</label>
-          <div>
-              <input type="file" accept="image/*" (change)="prepareUploadPhoto($event)" class="" id="imagem">
-          </div>
+          <div class="form-group">
+            <small  class="form-text text-muted"></small>
+        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancelarCadastro()">Cancelar</button>
         <button type="button" class="btn btn-primary" (click)="cadastrarProduto()" data-dismiss="modal">Cadastrar</button>
       </div>
     </form>
     </div>
   </div>
 </div>
-
 <!-- modal excluir produto -->
 <div class="modal fade" id="excluirProduto" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">

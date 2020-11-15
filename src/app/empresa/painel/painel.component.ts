@@ -25,27 +25,28 @@ export class PainelComponent implements OnInit {
  data: any =  []
  imagem: File
  file: any
- 
- 
+ imagemProduto; 
+ carregarBotao: boolean = true
  dadosUsuario = JSON.parse(localStorage.getItem('userLogged'));
  
   constructor(private suporte: SuporteService, private sevProdutos: ProdutosService,private formBuilder: FormBuilder,public router: Router) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.iniciarFormProdutosEdit()
-    this.iniciarFormProdutos()
     this.getProdutos()
+  
   }
+  
 
   iniciarFormProdutos() {
+    console.log('aqui imagem',this.file)
     this.formProdutos = this.formBuilder.group({
-      
       customer: [this.dadosUsuario.id],
       category: ['',Validators.required],
       title: ['', Validators.required],
       description: ['', Validators.required],
       price: ['', Validators.required],
-      image:[this.file, Validators.required],
+      image:[this.file,Validators.required],
     });
   }
 
@@ -65,7 +66,8 @@ export class PainelComponent implements OnInit {
       (res: any) => {
         this.suporte.showMessage('Produto Criado com sucesso!')
         this.getProdutos()
-      }
+      },(error) => {
+        this.suporte.showMessageErro('HOUVE UM ERRO')}
       )
 
    } else {
@@ -116,18 +118,30 @@ export class PainelComponent implements OnInit {
     console.log(this.produtos)
     })
   }
-  prepareUploadPhoto(event): void {
-    this.imagem = event.target.files[0]
+
+  prepareUploadPhoto(event) {
+  this.imagem = event.target.files[0]
    let reader = new FileReader();
    reader.readAsDataURL(this.imagem);
-   reader.onload = function () {
-    // this.file = reader.result
-    // console.log(this.file)
+   reader.onload =  () => {
+    this.file = reader.result
+    this.iniciarFormProdutos()
+    console.log(this.file)
+    this.setImagem()
    };
    reader.onerror = function (error) {
      console.log('Error: ', error);
    };
+   console.log(this.file)
   }
+
+  cancelarCadastro(){
+    window.location.reload();
+  }
+
+ setImagem(){
+ this.imagemProduto = this.file
+ }
   logout() {
     localStorage.clear();
     this.router.navigate(['/login']);
