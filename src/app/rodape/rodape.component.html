@@ -7,18 +7,18 @@
         <div class="col-md-4">
           <h4>Sobre</h4>
           <ul class="navbar-nav">
-            <li><a href="">Sobre</a></li>
+            <li><a routerLink="funciona">Sobre</a></li>
             <li><a href="">Empregos</a></li>
-            <li><a href="">Imprensa</a></li>
+            <!-- <li><a href="">Imprensa</a></li> -->
             <li><a href="">Novidades</a></li>
           </ul>
         </div>
         <div class="col-md-4">
           <h4>Contato</h4>
           <ul class="navbar-nav">
-            <li><a href="">Fale conosco</a></li>
-            <li><a href="">Desenvolvedores</a></li>
-            <li><a href="">chat</a></li>
+            <li><a data-toggle="modal" data-target="#fale">Fale conosco</a></li>
+            <li><a  data-toggle="modal" data-target="#dev">Desenvolvedores</a></li>
+            <!-- <li><a href="">chat</a></li> -->
           </ul>
         </div>
         <!-- <div class="col-md-2">
@@ -41,6 +41,64 @@
               <a href=""><img src="assets/rede-sociais/instagram.png"></a>
             </li>
           </ul>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- modal fale conosco -->
+    <div class="modal fade bd-example-modal-lg" id="fale" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    
+      <div class="modal-dialog modal-dialog-centered bmodal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="title-modal">fale conosco</div>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <img class="img-modal" src="assets/logo.png" width="142">
+          <div class="container">
+            <!-- <h2 class="">Sistema web para busca </h2> -->
+            <div class="row">
+                <div class="col">
+            <h3> <strong>Email:</strong> </h3>atendimento@apontainfo.com.br  <br> 
+            </div>
+        </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- modal desenvolvedores-->
+    <div class="modal fade bd-example-modal-lg" id="dev" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    
+      <div class="modal-dialog modal-dialog-centered bmodal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="title-modal">Desenvolvedores</div>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <img class="img-modal" src="assets/logo.png" width="142">
+          <div class="container">
+            <h2 class="">Sistema web desenvolvido em Angular 10 </h2>
+            <div class="row">
+                <div class="col-md-4">
+            <h3> <strong>Disciplina:</strong> </h3>Projeto Final  <br> 
+            <h3> <strong>Professor Orientador:</strong> </h3> Marco Antonio <br>
+            <h3> <strong>Curso:</strong> </h3>Ciência da Computação
+            </div>
+            <div class="col-md-8">
+           <h3><strong>Alunos:</strong></h3> 
+            Allan Fonseca de Oliveira <br>
+            Patrick Avillar
+            <h3><strong>instituição:</strong></h3> 
+            Centro Universitário Augusto Motta - UNISUAM
+            </div>
+        </div>
+        </div>
         </div>
       </div>
     </div>

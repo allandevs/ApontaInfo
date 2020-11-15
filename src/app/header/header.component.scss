@@ -45,8 +45,19 @@ li a {
   text-decoration: none;
 }
 
-@media (max-width:600px){
+// @media (max-width:600px){
+//   .menu{
+//     display:none;
+//   }
+// }
+
+@media (max-width:800px){
   .menu{
-    display:none;
+    .row{
+      flex-wrap: nowrap;
+    }
+    display: flex;
+    overflow-x: auto;
+    // flex-wrap: nowrap;
   }
 }

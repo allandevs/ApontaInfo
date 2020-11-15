@@ -1,32 +1,53 @@
 footer {
-    background: #000;
-	padding: 70px 0px 70px 0px;
-	position: relative;
-  
+  background: #000;
+  padding: 70px 0px 70px 0px;
+  position: relative;
 }
 
-
 footer h4 {
-	color: #919496;
-	font-size: 0.8em;
-	text-transform: uppercase;
+  color: #919496;
+  font-size: 0.8em;
+  text-transform: uppercase;
 }
 
 footer .navbar-nav a {
-	color: white;
-	font-size: 0.8em;
+  color: white;
+  font-size: 0.8em;
 }
 
 footer .navbar-nav a:hover {
-	color: #9bf0e1;
-	text-decoration: none;
+  color: #9bf0e1;
+  text-decoration: none;
 }
 
 footer ul {
-	list-style: none;
+  list-style: none;
 }
 
 footer ul li {
-	float: right;
-	margin: 0 5px;
+  float: right;
+  margin: 0 5px;
+}
+
+h2 {
+  text-align: center;
+  margin: 0;
+  padding: 5px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+h3{
+	margin: 0;
+}
+.modal-header {
+  background-color: #22abdf;
+}
+
+.title-modal {
+  font-size: 22px;
+  color: #fff !important;
+  text-transform: capitalize;
+}
+a {
+  cursor: pointer;
 }
