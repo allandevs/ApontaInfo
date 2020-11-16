@@ -11,14 +11,16 @@ import { CelularesComponent } from './categorias/celulares/celulares.component'
 import { GamesComponent } from './categorias/games/games.component'
 import { CamerasComponent} from './categorias/cameras/cameras.component'
 import { SomComponent } from './categorias/som/som.component'
-
+import { AuthGuardGuard  } from './auth-guard.guard'
+ 
 // const routes: Routes = [];
 
 
 const ROUTES: Routes = [
+  
 { path:'cadastro', component: CadastroComponent },
-{ path:'login', component: LoginComponent },
-{ path: 'painel', component: PainelComponent },
+{ path:'login', component: LoginComponent, },
+{ path: 'painel', component: PainelComponent, canActivate: [AuthGuardGuard] },
 { path: 'funciona', component: FuncionaComponent },
 {
    path:'',
@@ -39,7 +41,7 @@ const ROUTES: Routes = [
 
 
 @NgModule({
-  imports: [RouterModule.forRoot(ROUTES)],
+  imports: [RouterModule.forRoot(ROUTES,{ useHash: true })],
   exports: [RouterModule]
 })
 
