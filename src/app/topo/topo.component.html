@@ -10,7 +10,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="nav-principal">
-      <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav ml-auto" *ngIf="!logado" >
         <li class="nav-item">
           <a routerLink="/funciona" class="nav-link">Como Funciona</a>
         </li>
@@ -20,6 +20,18 @@
         <li class="nav-item divisor"></li>
         <li class="nav-item">
           <a routerLink="/login" class="nav-link">Entrar</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto" *ngIf="logado" >
+        <li class="nav-item">
+          <span class="nav-link"> Olá, <strong> {{dadosUsuario.nameFantasia}} </strong></span>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/painel" class="nav-link" >Painel</a>
+        </li>
+        <li class="nav-item divisor"></li>
+        <li class="nav-item">
+          <a  class="nav-link" (click)="logout()">Sair</a>
         </li>
       </ul>
     </div>

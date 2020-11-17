@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light navbar-transparente">
     <div class="container">
       
-      <a class="navbar-brand">
+      <a class="navbar-brand" href="index.html">
         <img src="assets/logo.png" width="142">
       </a>
   
@@ -11,7 +11,10 @@
            <span>Bem vindo, <strong>{{dadosUsuario.nameFantasia}}</strong></span>
           </li>
         </ul>
-        <ul class="navbar-nav">
+        <ul class="navbar-nav flex">
+          <li>
+            <a  href="index.html" class="btn btn-outline-dark" >Ir para site</a>
+           </li>
          <li>
          <button class="btn btn-dark" (click)="logout()">Sair</button>
         </li>
@@ -149,13 +152,13 @@
         </div>
         <label for="">Título</label>
           <div class="form-group">
-              <input type="text" class="form-control"  placeholder="Ex Notebook Lenovo Ideapad S145" formControlName="title">
+              <input type="text" class="form-control"  placeholder="Ex Notebook Lenovo Ideapad S145" maxlength="60" formControlName="title">
               <small  class="form-text text-muted"></small>
           </div>
           <label for="desc">Descrição</label>
           <div class="form-group">
-              <input type="text" class="form-control" id="desc"  placeholder="Ex Notebook Lenovo Ideapad S145, Intel Core i5-8265U 8GB, 1TB, Placa de Vídeo NVIDIA GeForce" formControlName="description">
-              <small  class="form-text text-muted"></small>
+              <input type="text" class="form-control" id="desc" data-ls-module="charCounter" maxlength="120"placeholder="Ex Notebook Lenovo Ideapad S145, Intel Core i5-8265U 8GB, 1TB, Placa de Vídeo NVIDIA GeForce" formControlName="description">
+        
           </div>
           <label for="preco">Preço</label>
           <div class="form-group">
@@ -219,12 +222,11 @@
         </div>
         <label for="">Título</label>
           <div class="form-group">
-              <input type="text" class="form-control"  formControlName="title">
-              <small id="emailHelp" class="form-text text-muted"></small>
+              <input type="text" class="form-control"  formControlName="title" maxlength="60">
           </div>
           <label for="desc">Descrição</label>
           <div class="form-group">
-              <input type="text" class="form-control" id="desc"  formControlName="description" >
+              <input type="text" class="form-control" id="desc"  formControlName="description"maxlength="120" >
               <small id="emailHelp" class="form-text text-muted"></small>
           </div>
           <label for="preco">Preço</label>
