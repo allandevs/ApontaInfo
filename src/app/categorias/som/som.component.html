@@ -10,6 +10,7 @@
             <p class="card-text">{{produto.description}}</p>
             <p class="preco">{{produto.price | currency: 'BRL'}}</p>
             <p class="card-loja">{{produto.customer?.nameFantasia}}</p>
+            <div class="seuProduto text-danger" *ngIf="produto.customer?.nameFantasia == dadosUsuario?.nameFantasia ">Seu Produto</div>
             <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#saibaMais" (click)="infoLoja(produto.customer._id)" >Saiba Mais</button>
             </div>
         </div>

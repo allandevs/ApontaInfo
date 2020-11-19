@@ -57,6 +57,7 @@ export class PainelComponent implements OnInit {
       title: [this.data.title, Validators.required],
       description: [this.data.description, Validators.required],
       price: [this.data.price, Validators.required],
+      
     });
   }
 
@@ -69,6 +70,9 @@ export class PainelComponent implements OnInit {
       },(error) => {
         this.suporte.showMessageErro('HOUVE UM ERRO')}
       )
+      setTimeout(()=>{ 
+        window.location.reload();                   
+      }, 3000);
 
    } else {
     this.suporte.showMessageErro('OPS você excedeu seu limite de produtos!')
@@ -80,6 +84,7 @@ export class PainelComponent implements OnInit {
     description: ['', Validators.required],
     price: ['', Validators.required],
   });
+
   }
 
 
@@ -97,6 +102,44 @@ export class PainelComponent implements OnInit {
       })
   }
 
+ statusProduto(produto){
+   if(produto.active){
+    const obj = {
+      active: false
+    }
+    this.sevProdutos.statusProduto(produto._id,obj).subscribe((res: any)=> {
+      this.getProdutos()
+      this.suporte.showMessage('Produto desabilitado com sucesso!')
+    })
+  }
+    if(produto.active == false){
+      const obj = {
+        active: true
+      }
+      this.sevProdutos.statusProduto(produto._id,obj).subscribe((res: any)=> {
+        this.getProdutos()
+        this.suporte.showMessage('Produto ativado com sucesso!')
+      })
+   }
+
+  
+  
+ 
+    
+   
+  //  if(produto.active){
+  //   this.sevProdutos.statusProduto(produto._id).subscribe((res: any)=> {
+  //     this.getProdutos()
+  //     this.suporte.showMessage('Produto desabilitado com sucesso!')
+  //   })
+  //  }else {
+  //   this.sevProdutos.statusProduto(produto._id).subscribe((res: any)=> {
+  //     this.getProdutos()
+  //     this.suporte.showMessage('Produto ativado com sucesso!')
+  //   })
+  //  }
+   
+ }
   editarProduto(produto){
     this.data = produto 
     this.iniciarFormProdutosEdit()

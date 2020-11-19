@@ -28,6 +28,9 @@ export class ProdutosService extends BaseService {
   editarProduto(id, obj){
     return this.update(`products/${id}`,obj)
   }
+  statusProduto(id, obj){
+    return this.update(`products/status/${id}`,obj)
+  }
  
   getProdutoCategoria(categoria){
     return this.get(`products/category/${categoria}`)

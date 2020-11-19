@@ -37,6 +37,7 @@
                 <th scope="col">Descrição</th>
                 <th scope="col">Preço</th>
                 <th scope="col">Ferramentas</th>
+                <th scope="col">Status</th>
               </tr>
             </thead>
             <tbody>
@@ -47,10 +48,13 @@
                 <td> 
                     <div class="btn-ferramentas">
                     <button type="button" data-toggle="modal" data-target="#editarProduto" (click)="editarProduto(produto)"><i class="fas fa-edit"></i> </button>
-                    <button type="button" data-toggle="modal" data-target="#excluirProduto" (click)="deletarProduto(produto._id, produto.title)"><i class="fas fa-trash-alt"></i></button> 
+                    <button type="button" data-toggle="modal" data-target="#excluirProduto" (click)="deletarProduto(produto._id, produto.title)"><i class="fas fa-trash-alt"></i></button>
+                    <button type="button"  (click)="statusProduto(produto)"><i class="fas fa-retweet"></i></button>  
                     </div>
-                    
                 </td>
+                <!-- <td> <div *ngIf="produto.active" class="bg-success text-white" style="width: 60px; text-align: center; border-radius: 5px;" >Ativo</div> </td>
+                <td> <div *ngIf="!produto.active" class="bg-danger text-white" style="width: 60px; text-align: center; border-radius: 5px;" >Inativo</div> </td> -->
+                <td> <div style="width: 60px; text-align: center; border-radius: 5px; color: #fff;" [ngStyle]="{ background: produto.active ? '#5cb85c' : '#d9534f' }">{{produto.active ? 'Ativo' : 'Inativo'}}</div> </td>
               </tr>
             </tbody>
           </table>

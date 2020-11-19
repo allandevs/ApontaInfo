@@ -10,6 +10,8 @@ export class GamesComponent implements OnInit {
   constructor(private sevProdutos: ProdutosService) { }
   imagemProduto = "../assets/produto-sem-imagem.jpg"
   dados:any
+  dadosUsuario = JSON.parse(localStorage.getItem('userLogged'));
+
   ngOnInit(): void {
     this.getProdutosCategoria()
   }
@@ -17,6 +19,7 @@ export class GamesComponent implements OnInit {
   getProdutosCategoria(){
     this.sevProdutos.getProdutoCategoria('Games').subscribe((res) =>{
      this.produtos = res
+     console.log(this.produtos )
     })
   }
 

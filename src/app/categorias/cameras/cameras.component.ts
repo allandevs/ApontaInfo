@@ -10,6 +10,7 @@ export class CamerasComponent implements OnInit {
   public produtos
   imagemProduto = "../assets/produto-sem-imagem.jpg"
   dados:any;
+  dadosUsuario = JSON.parse(localStorage.getItem('userLogged'));
   constructor(private sevProdutos: ProdutosService) { }
 
   ngOnInit(): void {

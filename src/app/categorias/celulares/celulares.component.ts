@@ -11,6 +11,7 @@ export class CelularesComponent implements OnInit {
   public produtos
   imagemProduto = "../assets/produto-sem-imagem.jpg"
   dados:any
+  dadosUsuario = JSON.parse(localStorage.getItem('userLogged'));
   ngOnInit(): void {
     this.getProdutosCategoria()
   }

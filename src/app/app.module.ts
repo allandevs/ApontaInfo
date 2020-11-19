@@ -24,7 +24,7 @@ import { SomComponent } from './categorias/som/som.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ImageCropperModule } from 'ngx-image-cropper';
-
+import { TextMaskModule } from 'angular2-text-mask';
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
@@ -56,7 +56,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     ReactiveFormsModule,
     NgxMaskModule.forRoot(),
     BrowserAnimationsModule,
-    ImageCropperModule
+    ImageCropperModule,
+    TextMaskModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -11,6 +11,7 @@ export class SomComponent implements OnInit {
   public produtos
   imagemProduto = "../assets/produto-sem-imagem.jpg"
   dados:any
+  dadosUsuario = JSON.parse(localStorage.getItem('userLogged'));
   constructor(private sevProdutos: ProdutosService) { }
 
   ngOnInit(): void {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProdutosService } from '../../produtos.service'
+import { global} from '../../shared/global'
 
 @Component({
   selector: 'app-computadores',
@@ -10,6 +11,8 @@ export class ComputadoresComponent implements OnInit {
 produtos: any = []
 imagemProduto = "../assets/produto-sem-imagem.jpg"
 dados:any
+dadosUsuario = JSON.parse(localStorage.getItem('userLogged'));
+maskTelefone = global.telmask;
   constructor(private sevProdutos: ProdutosService) { }
 
   ngOnInit(): void {
