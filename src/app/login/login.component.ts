@@ -29,7 +29,16 @@ export class LoginComponent implements OnInit {
   this.authService.authUsuario(objLogin).subscribe((usuarioLogado) => {
      console.log(usuarioLogado)
       localStorage.setItem('userLogged', JSON.stringify(usuarioLogado.data));
-     this.router.navigate(['painel']);
+      
+      if(usuarioLogado.data.active && usuarioLogado.data.tipo != '2' ){
+        this.router.navigate(['painel']);
+      }
+      else if (usuarioLogado.data.active && usuarioLogado.data.tipo == '2'){
+        this.router.navigate(['admin']);
+      }else {
+        this.suporte.showMessageErro('OPS sua conta esta inativa entre contato!')
+      }
+     
   },(error) => {
     this.suporte.showMessageErro('E-mail e/ou senha inválidos')
   })

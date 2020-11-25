@@ -24,10 +24,12 @@
       </ul>
       <ul class="navbar-nav ml-auto" *ngIf="logado" >
         <li class="nav-item">
-          <span class="nav-link"> Olá, <strong> {{dadosUsuario.nameFantasia}} </strong></span>
+          <span *ngIf=" dadosUsuario.tipo == '1' " class="nav-link"> Olá, <strong> {{dadosUsuario.nameFantasia}} </strong></span>
+          <span *ngIf=" dadosUsuario.tipo == '2' " class="nav-link"> Olá, <strong> Admin </strong></span>
         </li>
         <li class="nav-item">
-          <a routerLink="/painel" class="nav-link" >Painel</a>
+          <a *ngIf=" dadosUsuario.tipo == '1' " routerLink="/painel" class="nav-link" >Painel</a>
+          <a *ngIf=" dadosUsuario.tipo == '2' " routerLink="/admin" class="nav-link" >Painel</a>
         </li>
         <li class="nav-item divisor"></li>
         <li class="nav-item">

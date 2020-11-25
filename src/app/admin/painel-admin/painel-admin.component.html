@@ -1,0 +1,33 @@
+
+<div class="container">
+    <nav class="navbar navbar-expand-md navbar-light navbar-transparente">
+        <div class="container-fluid">
+          
+          <a class="navbar-brand" href="index.html">
+            <img src="assets/logo.png" width="142">
+          </a>
+      
+          <div style="display: flex; flex-direction: column;">
+            <ul class="navbar-nav ml-auto" >
+                <!-- <li class="nav-item">
+                  <a routerLink="usuarios" class="nav-link">Usuarios</a>
+                </li> -->
+                <li class="nav-item">
+                   <span class="nav-link"> Olá, <strong>Admin</strong> </span> 
+                </li>
+                <li class="nav-item divisor"></li>
+                <li class="nav-item">
+                  <a  class="nav-link" (click)="logout()">Sair</a>
+                </li>
+              </ul>
+          </div>
+      
+        </div>
+      </nav>
+      <div class="header">
+        <h4>Painel Administrativo</h4>
+    </div>
+    <app-usuarios></app-usuarios>
+      <!-- <router-outlet></router-outlet> -->
+    
+</div>

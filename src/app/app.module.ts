@@ -25,6 +25,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { TextMaskModule } from 'angular2-text-mask';
+import { PainelAdminComponent } from './admin/painel-admin/painel-admin.component';
+
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import { UsuariosComponent } from './admin/usuarios/usuarios.component';
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
@@ -44,7 +49,9 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     CelularesComponent,
     GamesComponent,
     CamerasComponent,
-    SomComponent
+    SomComponent,
+    PainelAdminComponent,
+    UsuariosComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +65,9 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     BrowserAnimationsModule,
     ImageCropperModule,
     TextMaskModule,
+    MatSidenavModule,
+    MatListModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

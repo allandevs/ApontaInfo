@@ -1,0 +1,53 @@
+
+<div class="container">
+
+  <div class="row align-items-center justify-content-center mt-3"> 
+    <div class="card text-white bg-secondary mb-3 mr-3" style="max-width: 18rem;">
+      <div class="card-header">Total</div>
+      <div class="card-body">
+        <h5 class="card-title">{{usuarios?.length}}</h5>
+      </div>
+    </div>
+
+    <div class="card text-white bg-success mb-3 mr-3" style="max-width: 18rem;">
+      <div class="card-header">Ativos</div>
+      <div class="card-body">
+        <h5 class="card-title">{{usuariosAtivos?.length - 1}}</h5>
+      </div>
+    </div>
+    <div class="card text-white bg-danger mb-3 mr-3" style="max-width: 18rem;">
+      <div class="card-header">Bloqueados</div>
+      <div class="card-body">
+        <h5 class="card-title">{{usuariosInativos?.length}}</h5>
+      </div>
+    </div>
+  </div>
+
+    <table class="table table-striped responsive-table">
+        <thead>
+          <tr>
+            <th scope="col">Nome da Empresa</th>
+            <th scope="col">Cnpj</th>
+            <th scope="col">Tipo de conta</th>
+            <th scope="col">Ferramentas</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor=" let usuario of usuarios">
+            <td>{{usuario?.nameFantasia}}</td>
+            <td>{{usuario?.cnpj}}</td>
+            <td>{{usuario?.plano}}</td>
+            <td> 
+                <div class="btn-ferramentas">
+                <button type="button" data-toggle="modal" data-target="#editarProduto" (click)="editarProduto(produto)"><i class="fas fa-edit"></i> </button>
+                <button type="button" data-toggle="modal" data-target="#excluirProduto" (click)="deletarProduto(produto._id, produto.title)"><i class="fas fa-trash-alt"></i></button>
+                <button type="button"  (click)="statusCliente(usuario)"><i class="fas fa-retweet"></i></button>  
+                </div>
+            </td>
+         <td> <div style="width: 60px; text-align: center; border-radius: 5px; color: #fff;" [ngStyle]="{ background: usuario?.active ? '#5cb85c' : '#d9534f' }">{{usuario?.active ? 'Ativo' : 'Inativo'}}</div> </td>
+          </tr>
+        </tbody>
+      </table>
+
+</div>

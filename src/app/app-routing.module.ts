@@ -11,6 +11,8 @@ import { CelularesComponent } from './categorias/celulares/celulares.component'
 import { GamesComponent } from './categorias/games/games.component'
 import { CamerasComponent} from './categorias/cameras/cameras.component'
 import { SomComponent } from './categorias/som/som.component'
+import { PainelAdminComponent } from './admin/painel-admin/painel-admin.component'
+import { UsuariosComponent } from './admin/usuarios/usuarios.component'
 import { AuthGuardGuard  } from './auth-guard.guard'
  
 // const routes: Routes = [];
@@ -19,9 +21,18 @@ import { AuthGuardGuard  } from './auth-guard.guard'
 const ROUTES: Routes = [
   
 { path:'cadastro', component: CadastroComponent },
-{ path:'login', component: LoginComponent, },
+{ path:'login', component: LoginComponent},
 { path: 'painel', component: PainelComponent, canActivate: [AuthGuardGuard] },
 { path: 'funciona', component: FuncionaComponent },
+
+{ path: 'admin', 
+component: PainelAdminComponent,
+children:[
+  {path: 'usuarios', component: UsuariosComponent}
+],
+
+},
+
 {
    path:'',
     component: HomeComponent,
