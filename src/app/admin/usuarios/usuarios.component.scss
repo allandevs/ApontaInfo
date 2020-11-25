@@ -87,6 +87,9 @@
 .fa-edit {
   color: #22abdf;
 }
+.row {
+  flex-wrap: nowrap !important;
+}
 .card {
   width: 200px;
   .card-header {
