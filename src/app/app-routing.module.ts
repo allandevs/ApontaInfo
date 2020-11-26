@@ -14,6 +14,7 @@ import { SomComponent } from './categorias/som/som.component'
 import { PainelAdminComponent } from './admin/painel-admin/painel-admin.component'
 import { UsuariosComponent } from './admin/usuarios/usuarios.component'
 import { AuthGuardGuard  } from './auth-guard.guard'
+import { BuscaComponent } from './busca/busca.component';
  
 // const routes: Routes = [];
 
@@ -43,6 +44,7 @@ children:[
       { path: 'games', component: GamesComponent },
       { path: 'cameras', component: CamerasComponent },
       { path: 'som', component: SomComponent },
+      { path: 'busca/:filtro', component: BuscaComponent}
 
     ],
      

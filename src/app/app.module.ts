@@ -30,6 +30,7 @@ import { PainelAdminComponent } from './admin/painel-admin/painel-admin.componen
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import { UsuariosComponent } from './admin/usuarios/usuarios.component';
+import { BuscaComponent } from './busca/busca.component';
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
@@ -51,7 +52,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     CamerasComponent,
     SomComponent,
     PainelAdminComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    BuscaComponent
   ],
   imports: [
     BrowserModule,
