@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class BuscaComponent implements OnInit {
   buscarProduto: any;
   produtosFiltrados: any;
+  dados:any
  ;
 
   constructor( private servProdutos: ProdutosService, private route: ActivatedRoute ) { 
@@ -19,7 +20,7 @@ export class BuscaComponent implements OnInit {
   ngOnInit(): void {
    this.route.params.subscribe((res) => {
   this.getBuscarProdutos(res.filtro)
-})
+   })
   }
 
   getBuscarProdutos(params) {
@@ -31,4 +32,11 @@ export class BuscaComponent implements OnInit {
     });
     
   }
+
+  infoLoja(id){
+    this.servProdutos.getCustomer(id).subscribe((result) =>{
+      this.dados = result
+    })
+  }
+
 }

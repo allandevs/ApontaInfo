@@ -1,1 +1,59 @@
-<p *ngFor="let item of produtosFiltrados">{{item.title}}</p>
+<div class="container">
+    
+    <div class="row" >
+        <div class="col-sm-4 mb-2" *ngFor="let produto of produtosFiltrados">
+        <div class="card">
+            <!-- <img *ngIf="!produto.image" class="card-img-top" [src]="imagemProduto"> -->
+            <img *ngIf="produto.image" class="card-img-top img-prod" [src]="produto?.image">
+            <div class="card-block">
+            <h4 class="card-title">{{produto.title}}</h4>
+            <p class="card-text">{{produto.description}}</p>
+            <p class="preco">{{produto.price | currency: 'BRL'}}</p>
+            <p class="card-loja">{{produto.customer?.nameFantasia}}</p>
+            <!-- <div class="seuProduto text-danger" *ngIf="produto.customer?.nameFantasia == dadosUsuario?.nameFantasia ">Seu Produto</div> -->
+            <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#saibaMais" (click)="infoLoja(produto.customer._id)" >Saiba Mais</button>
+            </div>
+        </div>
+        </div>
+    </div>
+ 
+<!-- Large modal -->
+<div class="modal fade bd-example-modal-lg" id="saibaMais" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    
+    <div class="modal-dialog modal-dialog-centered bmodal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="title-modal">{{dados?.nameFantasia}}</div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <img class="img-modal" src="assets/logo.png" width="142">
+        <div class="container">
+          
+            <div class="form-group">
+                <label for="">Empresa: </label> 
+                <span class="capitalize"> {{ dados?.name }}</span>
+            </div>
+            <div class="form-group">
+                <label for="">CNPJ: </label> 
+                <span> {{ dados?.cnpj }}</span>
+            </div>
+            <div class="form-group">
+                <label for="">Endereço: </label> 
+                <span > {{ dados?.endereco }}, {{ dados?.complemento }} </span>
+            </div>
+            <div class="form-group">
+                
+                <span> {{ dados?.bairro}}, {{ dados?.cidade }} - CEP {{ dados?.cep }} </span>
+            </div>
+            <div class="form-group">
+                <label for="">Telefone: </label> 
+                <span > {{ dados?.telefone}}</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>  
