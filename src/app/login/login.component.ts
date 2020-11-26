@@ -30,13 +30,14 @@ export class LoginComponent implements OnInit {
      console.log(usuarioLogado)
       localStorage.setItem('userLogged', JSON.stringify(usuarioLogado.data));
       
-      if(usuarioLogado.data.active && usuarioLogado.data.tipo != '2' ){
+      if(usuarioLogado.data.active  && usuarioLogado.data.tipo != '2' ){
         this.router.navigate(['painel']);
       }
       else if (usuarioLogado.data.active && usuarioLogado.data.tipo == '2'){
         this.router.navigate(['admin']);
       }else {
         this.suporte.showMessageErro('OPS sua conta esta inativa entre contato!')
+        localStorage.clear();
       }
      
   },(error) => {

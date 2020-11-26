@@ -24,7 +24,7 @@ Os cadastros serão liberados na hora e nossa equipe poderá fazer uma análise 
       </div>
       <div class="form-group">
         <label for="cnpj">Cnpj</label>
-        <input type="text" class="form-control" id="cnpj" [(ngModel)]="cnpj" mask="00.000.000/0000-00" formControlName="cnpj">
+        <input type="text" class="form-control" id="cnpj" [(ngModel)]="cnpj" [textMask]="{mask: maskCnpj}" formControlName="cnpj">
         <small id="cnpj" class="form-text text-muted">Preencha correntamente, digite somente números</small>
       </div>
       <div class="form-group">
@@ -59,12 +59,12 @@ Os cadastros serão liberados na hora e nossa equipe poderá fazer uma análise 
       </div>
       <div class="form-group">
         <label for="cep">Cep</label>
-        <input  type="text" class="form-control" mask="00000-000"id="cep" formControlName="cep">
+        <input  type="text" class="form-control" [textMask]="{mask: maskCep}"id="cep" formControlName="cep">
         <small id="cep" class="form-text text-muted"></small>
       </div>  
       <div class="form-group">
         <label >Telefone</label>
-        <input class="form-control" type="text" mask="(00) 00000-0000" formControlName="telefone">
+        <input class="form-control" type="text" [textMask]="{mask: maskTelefone}" [(ngModel)]="tel" formControlName="telefone">
       </div>  
     <div class="form-group">
       <label for="exampleInputEmail1">Endereço de email</label>
