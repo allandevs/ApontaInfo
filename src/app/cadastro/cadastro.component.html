@@ -16,7 +16,45 @@ Os cadastros serão liberados na hora e nossa equipe poderá fazer uma análise 
   <strong>Atenção: </strong> campos com <span class="text-danger">*</span> são obrigatórios.
 </div>
 
-<form [formGroup]="formCadastro">
+<form [formGroup]="formCadastro" *ngIf="formCadastro">
+  <div class="form-row">
+    <div class="col-md-2 mb-3">
+      <label for="cep">Cep <span class="text-danger">*</span></label>
+      <input  type="text" class="form-control" [textMask]="{mask: maskCep}"id="cep" formControlName="cep" [(ngModel)]="cepX" (focusout)="BuscarEndereco(cepX)">
+      <small id="cep" class="form-text text-muted"></small>
+    </div>  
+    <div class="col-md-6 mb-3">
+      <label for="endereco">Endereço <span class="text-danger">*</span></label>
+      <input type="text" class="form-control" id="endereco"  placeholder="  Ex Estrada do rio" formControlName="endereco">
+      <small id="endereco" class="form-text text-muted">Coloque endereço correntamente, pois vamos compartilhar</small>
+    </div>
+    <div class="col-md-1 mb-3">
+      <label for="numero">Número <span class="text-danger">*</span></label>
+      <input type="text" class="form-control" id="numero"  formControlName="numero">
+    </div>
+    
+  </div>
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="endComplemento">Complemento</label>
+      <input type="text" class="form-control" id="endComplemento"  placeholder=" Ex loja 7c" formControlName="complemento">
+      <small id="endComplemento" class="form-text text-muted"></small>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="bairro">Bairro <span class="text-danger">*</span></label>
+      <input type="text" class="form-control" placeholder="" formControlName="bairro">
+      <small id="bairro" class="form-text text-muted"></small>
+    </div>
+    <div class="col-md-2 mb-3">
+      <label for="exampleInputEmail1">Cidade <span class="text-danger">*</span></label>
+      <input type="text" class="form-control" formControlName="cidade"  placeholder="">
+      <small class="form-text text-muted"></small>
+    </div>
+    <div class="col-md-1 mb-3">
+      <label for="exampleFormControlSelect1">Estado <span class="text-danger">*</span></label>
+      <input type="text" class="form-control" formControlName="estado"  placeholder="">
+    </div>
+  </div>
   <div class="form-group">
     <label for="nomeEmpresa">Nome da Empresa Razão Social  <span class="text-danger">*</span></label>
     <input type="text" class="form-control" id="nomeEmpresa" required="required" formControlName="name" placeholder="">
@@ -33,51 +71,13 @@ Os cadastros serão liberados na hora e nossa equipe poderá fazer uma análise 
       <input type="text" class="form-control" id="cnpj" [(ngModel)]="cnpj" [textMask]="{mask: maskCnpj}" formControlName="cnpj">
       <small id="cnpj" class="form-text text-muted">Preencha correntamente, digite somente números</small>
     </div>
+    <div class="col-md-3">
+      <label >Telefone <span class="text-danger">*</span></label>
+      <input class="form-control" type="text" [textMask]="{mask: maskTelefone}" [(ngModel)]="tel" formControlName="telefone">
+    </div> 
   </div>
-      <div class="form-row">
-        <div class="col-md-2 mb-3">
-          <label for="cep">Cep <span class="text-danger">*</span></label>
-          <input  type="text" class="form-control" [textMask]="{mask: maskCep}"id="cep" formControlName="cep">
-          <small id="cep" class="form-text text-muted"></small>
-        </div>  
-        <div class="col-md-6 mb-3">
-          <label for="endereco">Endereço <span class="text-danger">*</span></label>
-          <input type="text" class="form-control" id="endereco"  placeholder="  Ex Estrada do rio, 495" formControlName="endereco">
-          <small id="endereco" class="form-text text-muted">Coloque endereço correntamente, pois vamos compartilhar</small>
-        </div>
-        <div class="col-md-4 mb-3">
-          <label for="endComplemento">Complemento</label>
-          <input type="text" class="form-control" id="endComplemento"  placeholder=" Ex loja 7c" formControlName="complemento">
-          <small id="endComplemento" class="form-text text-muted"></small>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="col-md-3 mb-3">
-          <label for="bairro">Bairro <span class="text-danger">*</span></label>
-          <input type="text" class="form-control" placeholder="" formControlName="bairro">
-          <small id="bairro" class="form-text text-muted"></small>
-        </div>
-        <div class="col-md-3 mb-3">
-          <label for="exampleInputEmail1">Cidade <span class="text-danger">*</span></label>
-          <input type="text" class="form-control" formControlName="cidade"  placeholder=" Ex Rio de Janeiro">
-          <small class="form-text text-muted"></small>
-        </div>
-        <div class="col-md-3 mb-3">
-          <label for="exampleFormControlSelect1">Estado <span class="text-danger">*</span></label>
-          <select class="form-control" formControlName="estado" >
-            <option>Selecione</option>
-            <option>RJ</option>
-            <option>SP</option>
-            <option>BA</option>
-            <option>AL</option>
-          </select>
-        </div>
-      </div>
     <div class="form-row">
-      <div class="col-md-3">
-        <label >Telefone <span class="text-danger">*</span></label>
-        <input class="form-control" type="text" [textMask]="{mask: maskTelefone}" [(ngModel)]="tel" formControlName="telefone">
-      </div>  
+       
     </div>
     <div class="form-row">
       <div class="col-md-5 mb-3">

@@ -1,3 +1,4 @@
+import { UsuariosService } from './../usuarios.service';
 import { CadastroUserService } from './../cadastro-user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -13,28 +14,41 @@ import { global} from './../shared/global'
 export class CadastroComponent implements OnInit {
   formCadastro : FormGroup;
   cnpj
+  nome
+  cepX
+  cepFormatado = ''
   maskTelefone = global.telmask;
   maskCnpj = global.cnpjMask
   maskCep = global.cepMask;
   tel
-  constructor(private formBuilder: FormBuilder, public cadastroUser: CadastroUserService,private suporte: SuporteService,public router: Router) { }
+  endereco : any = ' '
+
+  constructor(private formBuilder: FormBuilder, 
+    public cadastroUser: CadastroUserService,
+    private suporte: SuporteService,
+    public router: Router,
+    public sevUsuario: UsuariosService ) { 
+      
+    }
 
   ngOnInit(): void {
-    this.iniciarFormProdutos()
+   this.iniciarFormProdutos()
   }
 
 
   iniciarFormProdutos() {
+    console.log(this.endereco)
     this.formCadastro = this.formBuilder.group({
       name: ['',Validators.required],
       nameFantasia: ['',Validators.required],
       cnpj: ['', Validators.required],
-      endereco: ['', Validators.required],
+      endereco: [ this.endereco.logradouro, Validators.required],
+      numero: [ '', Validators.required],
       complemento: ['', Validators.required],
-      bairro:[, Validators.required],
-      cidade: ['',Validators.required],
-      estado: ['', Validators.required],
-      cep: ['', Validators.required],
+      bairro:[this.endereco.bairro, Validators.required],
+      cidade: [this.endereco.localidade,Validators.required],
+      estado: [this.endereco.uf, Validators.required],
+      cep: [this.endereco.cep, Validators.required],
       telefone: ['', Validators.required],
       email: ['', Validators.required],
       password:['', Validators.required],
@@ -42,6 +56,15 @@ export class CadastroComponent implements OnInit {
     });
   }
 
+  BuscarEndereco(cep){
+    this.cepFormatado = cep.replace("-", "").replace("_", "");
+    this.sevUsuario.getEnd(this.cepFormatado).subscribe((res =>{
+      this.endereco = res
+      console.log(res)
+      this.iniciarFormProdutos()
+    }))
+  
+  }
   cadastrar(){
     this.validarCNPJ(this.cnpj)
     console.log(this.tel)

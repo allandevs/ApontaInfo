@@ -8,8 +8,9 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./busca.component.scss']
 })
 export class BuscaComponent implements OnInit {
-  buscarProduto: any;
+  buscarProduto: any 
   produtosFiltrados: any;
+  nomeDabusca
   dados:any
  ;
 
@@ -20,6 +21,7 @@ export class BuscaComponent implements OnInit {
   ngOnInit(): void {
    this.route.params.subscribe((res) => {
   this.getBuscarProdutos(res.filtro)
+ this.nomeDabusca = res.filtro
    })
   }
 

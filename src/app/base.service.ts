@@ -34,4 +34,11 @@ export class BaseService {
     });
   }
   
+  getEndereco(route: string): Observable<any> {
+    return this.http.get(global.BASE_API_VIACEP + route, {
+      headers: this.header,
+    });
+  }
+
+  
 }

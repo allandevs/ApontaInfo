@@ -1,5 +1,9 @@
 <div class="container">
-    
+    <h1 *ngIf="produtosFiltrados.length != 0">{{nomeDabusca}}</h1>
+    <div class="border"></div>
+   <div class="vazio" *ngIf="produtosFiltrados.length == 0" >
+   <span class="text">Ops!</span>  nenhum resultado encontrado para <span class="text">" {{nomeDabusca == 'undefined' ? " " : nomeDabusca}} "</span> 
+   </div>
     <div class="row" >
         <div class="col-sm-4 mb-2" *ngFor="let produto of produtosFiltrados">
         <div class="card">

@@ -24,4 +24,9 @@ export class UsuariosService extends BaseService {
   statusCliente(id, obj){
     return this.update(`customers/status/${id}`,obj)
   }
+
+  getEnd(obj){
+    return this.getEndereco(`${obj}/json`)
+  }
+
 }
