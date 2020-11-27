@@ -1,7 +1,7 @@
 <div class="container">
-    <h1 *ngIf="produtosFiltrados.length != 0">{{nomeDabusca}}</h1>
+    <h1 *ngIf="produtosFiltrados?.length != 0">{{nomeDabusca}}</h1>
     <div class="border"></div>
-   <div class="vazio" *ngIf="produtosFiltrados.length == 0" >
+   <div class="vazio" *ngIf="produtosFiltrados?.length == 0" >
    <span class="text">Ops!</span>  nenhum resultado encontrado para <span class="text">" {{nomeDabusca == 'undefined' ? " " : nomeDabusca}} "</span> 
    </div>
     <div class="row" >
