@@ -1,5 +1,7 @@
 h3 {
+  padding-top:10px ;
     text-align: center;
+    font-size: 24px;
   }
   label {
     color: #0080ff;
@@ -16,7 +18,7 @@ h3 {
   
   .img-prod {
     width: 280px;
-    height: 300px;
+    height: auto;
     margin: 0 auto
   }
   .modal-title {

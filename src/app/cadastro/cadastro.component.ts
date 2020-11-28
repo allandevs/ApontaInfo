@@ -14,7 +14,10 @@ import { global} from './../shared/global'
 export class CadastroComponent implements OnInit {
   formCadastro : FormGroup;
   cnpj
-  nome
+  name
+  nameFantasia
+  senha
+  repSenha
   cepX
   cepFormatado = ''
   maskTelefone = global.telmask;
@@ -33,15 +36,16 @@ export class CadastroComponent implements OnInit {
 
   ngOnInit(): void {
    this.iniciarFormProdutos()
+  
   }
 
 
   iniciarFormProdutos() {
     console.log(this.endereco)
     this.formCadastro = this.formBuilder.group({
-      name: ['',Validators.required],
-      nameFantasia: ['',Validators.required],
-      cnpj: ['', Validators.required],
+      name: [this.name,Validators.required],
+      nameFantasia: [this.nameFantasia,Validators.required],
+      cnpj: [this.cnpj, Validators.required],
       endereco: [ this.endereco.logradouro, Validators.required],
       numero: [ '', Validators.required],
       complemento: ['', Validators.required],
@@ -49,7 +53,7 @@ export class CadastroComponent implements OnInit {
       cidade: [this.endereco.localidade,Validators.required],
       estado: [this.endereco.uf, Validators.required],
       cep: [this.endereco.cep, Validators.required],
-      telefone: ['', Validators.required],
+      telefone: [this.tel, Validators.required],
       email: ['', Validators.required],
       password:['', Validators.required],
 
@@ -122,15 +126,19 @@ export class CadastroComponent implements OnInit {
         resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
         if (resultado != digitos.charAt(1))
               return false;
+              if(this.senha === this.repSenha){
+                this.cadastroUser.cadastrarEmpresa(this.formCadastro.value).subscribe(
 
-              this.cadastroUser.cadastrarEmpresa(this.formCadastro.value).subscribe(
-
-                (result :any ) =>{
-                 this.suporte.showMessage('Parabéns cadastrado realizado com sucesso!')
-                 this.router.navigate(['login']);
-                 
-              },(error) => {
-               this.suporte.showMessageErro('HOUVE UM ERRO')})
+                  (result :any ) =>{
+                   this.suporte.showMessage('Parabéns cadastrado realizado com sucesso!')
+                   this.router.navigate(['login']);
+                   
+                },(error) => {
+                 this.suporte.showMessageErro('HOUVE UM ERRO')})
+              
+              }else {
+                this.suporte.showMessageErro('A confirmação de senha, não confere.')
+              }
             
     
  }

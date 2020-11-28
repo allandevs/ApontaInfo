@@ -59,7 +59,11 @@
             </tbody>
           </table>
           <div class="noProdutos" *ngIf="produtos.length === 0">Você ainda não possui produtos cadastrados </div>
-          <div class="limitProdutos" *ngIf="produtos.length == 5 ">Você excedeu limite de produtos permitidos!</div>
+          <div class="limitProdutos" *ngIf="dadosUsuario.plano == 'free' && produtos.length >= 5 ">Você excedeu limite de produtos permitidos!</div>
+          <div class="limitProdutos" *ngIf="dadosUsuario.plano == 'start' && produtos.length >= 10 ">Você excedeu limite de produtos permitidos!</div>
+          <div class="limitProdutos" *ngIf="dadosUsuario.plano == 'plus' && produtos.length >= 15 ">Você excedeu limite de produtos permitidos!</div>
+          <div class="limitProdutos" *ngIf="dadosUsuario.plano == 'super' && produtos.length >= 30 ">Você excedeu limite de produtos permitidos!</div>
+          <div class="limitProdutos" *ngIf="dadosUsuario.plano == 'max' && produtos.length >= 60">Você excedeu limite de produtos permitidos!</div>
           
     </div>
 <!-- Dados da empresa -->
@@ -90,7 +94,11 @@
   </div>
   <div>
     <label for="">Limite de produtos:</label>
-      <span> Máximo 5 produtos </span>
+    <span *ngIf="dadosUsuario.plano == 'free'"> Máximo de 5 produtos</span>
+    <span *ngIf="dadosUsuario.plano == 'start' "> Máximo de 10 produtos</span>
+    <span *ngIf="dadosUsuario.plano == 'plus'  ">Máximo de 15 produtos</span>
+    <span *ngIf="dadosUsuario.plano == 'super' ">Máximo de 30 produtos</span>
+    <span *ngIf="dadosUsuario.plano == 'max' ">Máximo de 60 produtos</span>
   </div>
 </div>
 

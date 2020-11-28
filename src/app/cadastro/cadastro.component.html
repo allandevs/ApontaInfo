@@ -12,11 +12,32 @@
 <p>Esta área é para pequenas empresas de eletrônicos, se cadastrarem de forma que possam anunciar seus produtos.
 Os cadastros serão liberados na hora e nossa equipe poderá fazer uma análise no seu cadastro, havendo alguma irregularidade entraremos em contato.</p>
 
-<div class="alert alert-info">
+<div class="alert alert-primary">
   <strong>Atenção: </strong> campos com <span class="text-danger">*</span> são obrigatórios.
 </div>
 
 <form [formGroup]="formCadastro" *ngIf="formCadastro">
+  <div class="form-group">
+    <label for="nomeEmpresa">Nome da Empresa Razão Social  <span class="text-danger">*</span></label>
+    <input type="text" class="form-control" id="nomeEmpresa" required formControlName="name" [(ngModel)]="name">
+    <small id="nomeEmpresa" class="form-text text-muted">Nunca invente ou seu cadastro será cancelado</small>
+  </div>
+  <div class="form-row">
+    <div class="col-md-3 mb-3">
+      <label for="nomeFantasia">Nome Fantasia <span class="text-danger">*</span></label>
+      <input type="text" class="form-control" id="nomeFantasia" required formControlName="nameFantasia" [(ngModel)]="nameFantasia">
+      <small id="nomeFantasia" class="form-text text-muted"></small>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="cnpj">Cnpj <span class="text-danger">*</span></label>
+      <input type="text" class="form-control" id="cnpj" [(ngModel)]="cnpj" [textMask]="{mask: maskCnpj}" formControlName="cnpj">
+      <small id="cnpj" class="form-text text-muted">Preencha correntamente, digite somente números</small>
+    </div>
+    <div class="col-md-3">
+      <label >Telefone <span class="text-danger">*</span></label>
+      <input class="form-control" type="text" [textMask]="{mask: maskTelefone}" [(ngModel)]="tel" formControlName="telefone">
+    </div> 
+  </div>
   <div class="form-row">
     <div class="col-md-2 mb-3">
       <label for="cep">Cep <span class="text-danger">*</span></label>
@@ -25,7 +46,7 @@ Os cadastros serão liberados na hora e nossa equipe poderá fazer uma análise 
     </div>  
     <div class="col-md-6 mb-3">
       <label for="endereco">Endereço <span class="text-danger">*</span></label>
-      <input type="text" class="form-control" id="endereco"  placeholder="  Ex Estrada do rio" formControlName="endereco">
+      <input type="text" class="form-control" id="endereco"  placeholder=" " formControlName="endereco">
       <small id="endereco" class="form-text text-muted">Coloque endereço correntamente, pois vamos compartilhar</small>
     </div>
     <div class="col-md-1 mb-3">
@@ -55,27 +76,6 @@ Os cadastros serão liberados na hora e nossa equipe poderá fazer uma análise 
       <input type="text" class="form-control" formControlName="estado"  placeholder="">
     </div>
   </div>
-  <div class="form-group">
-    <label for="nomeEmpresa">Nome da Empresa Razão Social  <span class="text-danger">*</span></label>
-    <input type="text" class="form-control" id="nomeEmpresa" required="required" formControlName="name" placeholder="">
-    <small id="nomeEmpresa" class="form-text text-muted">Nunca invente ou seu cadastro será cancelado</small>
-  </div>
-  <div class="form-row">
-    <div class="col-md-3 mb-3">
-      <label for="nomeFantasia">Nome Fantasia <span class="text-danger">*</span></label>
-      <input type="text" class="form-control" id="nomeFantasia" required="required" formControlName="nameFantasia" placeholder="">
-      <small id="nomeFantasia" class="form-text text-muted"></small>
-    </div>
-    <div class="col-md-3 mb-3">
-      <label for="cnpj">Cnpj <span class="text-danger">*</span></label>
-      <input type="text" class="form-control" id="cnpj" [(ngModel)]="cnpj" [textMask]="{mask: maskCnpj}" formControlName="cnpj">
-      <small id="cnpj" class="form-text text-muted">Preencha correntamente, digite somente números</small>
-    </div>
-    <div class="col-md-3">
-      <label >Telefone <span class="text-danger">*</span></label>
-      <input class="form-control" type="text" [textMask]="{mask: maskTelefone}" [(ngModel)]="tel" formControlName="telefone">
-    </div> 
-  </div>
     <div class="form-row">
        
     </div>
@@ -87,7 +87,11 @@ Os cadastros serão liberados na hora e nossa equipe poderá fazer uma análise 
       </div>
       <div class="col-md-2 mb-3">
         <label for="exampleInputPassword1">Senha <span class="text-danger">*</span></label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha" formControlName="password">
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha" formControlName="password"  [(ngModel)]="senha">
+      </div>
+      <div class="col-md-2 mb-3">
+        <label for="exampleInputPassword1"> Confirme a Senha <span class="text-danger">*</span></label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirme senha " formControlName="password" [(ngModel)]="repSenha">
       </div>
     </div>
   

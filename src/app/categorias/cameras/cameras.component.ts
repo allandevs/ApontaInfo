@@ -19,7 +19,7 @@ export class CamerasComponent implements OnInit {
 
   getProdutosCategoria(){
     this.sevProdutos.getProdutoCategoria('Cameras').subscribe((res) =>{
-     this.produtos = res
+     this.produtos = res.filter(({ customer }) => customer.active)
     })
   }
 

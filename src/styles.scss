@@ -53,3 +53,13 @@ body {
   font-size: 14px;
   
 }
+@media (max-width: 800px) {
+  .card {
+    .card-title {
+      font-size: 19px !important;
+    }
+  .card-text{
+    font-size: 17px !important;
+  }
+  }
+}

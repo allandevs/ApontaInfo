@@ -21,7 +21,7 @@ maskTelefone = global.telmask;
 
   getProdutosCategoria(){
     this.sevProdutos.getProdutoCategoria('Computadores').subscribe((res) =>{
-     this.produtos = res
+     this.produtos = res.filter(({ customer }) => customer.active)
      console.log(this.produtos)
     })
   }

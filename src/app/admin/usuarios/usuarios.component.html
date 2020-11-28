@@ -40,8 +40,8 @@
             <td>{{usuario?.plano}}</td>
             <td> 
                 <div class="btn-ferramentas">
-                <button type="button" data-toggle="modal" data-target="#editarProduto" (click)="editarProduto(produto)"><i class="fas fa-edit"></i> </button>
-                <button type="button" data-toggle="modal" data-target="#excluirProduto" (click)="deletarProduto(produto._id, produto.title)"><i class="fas fa-trash-alt"></i></button>
+                <button type="button" data-toggle="modal" data-target="#editarCliente" (click)="editar(usuario)"><i class="fas fa-edit"></i> </button>
+                <button type="button" data-toggle="modal" data-target="#excluirCliente" (click)="deletarCliente(usuario._id, usuario.nameFantasia)"><i class="fas fa-trash-alt"></i></button>
                 <button type="button"  (click)="statusCliente(usuario)"><i class="fas fa-retweet"></i></button>  
                 </div>
             </td>
@@ -50,4 +50,56 @@
         </tbody>
       </table>
 
+      <!-- modal excluir cliente -->
+<div class="modal fade" id="excluirCliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Tem certeza que deseja excluir o parceiro {{ nomeCliente }}?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <!-- <span aria-hidden="true">&times;</span> -->
+        </button>
+      </div>
+      <!-- <div class="modal-body">
+         <span></span>
+      </div> -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" (click)="confirmar()" data-dismiss="modal">Sim</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- modal editar produto -->
+
+<div class="modal fade bd-example-modal-lg" id="editarCliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered bmodal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Editar Cliente</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="formCliente" *ngIf="formCliente">
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Alterar Plano</label>
+          <select class="form-control" formControlName="plano">
+            <option value="free">free</option>
+            <option value="start">start</option>
+            <option value="plus">plus</option>
+            <option value="super">super</option>
+            <option value="max">max</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="editarCliente()" data-dismiss="modal">Editar</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
 </div>

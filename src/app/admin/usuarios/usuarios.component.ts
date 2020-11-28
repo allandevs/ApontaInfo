@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from '../../usuarios.service'
 import {SuporteService } from '../../suporte.service'
-
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-usuarios',
@@ -12,12 +12,26 @@ export class UsuariosComponent implements OnInit {
  public usuarios
  public usuariosInativos
  public usuariosAtivos
-  constructor( private suporte: SuporteService,public sevUsuario: UsuariosService) { }
+ public idClienteDelete
+ public nomeCliente
+ public plano
+ public planoAtual
+ public idUsuario
+ formCliente: FormGroup;
+  constructor( private suporte: SuporteService,public sevUsuario: UsuariosService,private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.getUsuarios()
     this.getUsuariosInativos()
     this.getUsuariosAtivos()
+    this.iniciarFormCliente()
+  }
+
+
+  iniciarFormCliente() {
+    this.formCliente = this.formBuilder.group({
+      plano: [this.planoAtual, Validators.required],
+    });
   }
 
 
@@ -42,6 +56,43 @@ export class UsuariosComponent implements OnInit {
       console.log(this.usuariosInativos)
        })
   }
+
+  deletarCliente(id,titulo){
+    this.idClienteDelete = id
+    this.nomeCliente = titulo
+    
+   }
+
+   editar(usuario){
+    this.idUsuario = usuario._id
+    this.planoAtual = usuario.plano
+    this.iniciarFormCliente()
+   }
+
+  editarCliente(){
+     console.log()
+    this.sevUsuario.PlanoCliente(this.idUsuario,this.formCliente.value).subscribe(
+     (res: any)=>{
+      this.suporte.showMessage('Plano alterado com sucesso!')
+      this.getUsuarios()
+      this.getUsuariosInativos()
+      this.getUsuariosAtivos()
+   },(error) => {
+    this.suporte.showMessageErro('HOUVE UM ERRO')}
+  )
+  
+   }
+ 
+   confirmar(){
+    this.sevUsuario.deletarCliente(this.idClienteDelete).subscribe(
+      (res)=> {
+        this.getUsuarios()
+        this.getUsuariosInativos()
+        this.getUsuariosAtivos()
+        this.suporte.showMessage('Cliente deletado com sucesso!')
+    })
+  }
+
 
   statusCliente(usuario){
     if(usuario.active){

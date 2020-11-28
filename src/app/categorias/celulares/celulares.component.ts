@@ -18,7 +18,7 @@ export class CelularesComponent implements OnInit {
 
   getProdutosCategoria(){
     this.sevProdutos.getProdutoCategoria('Celulares').subscribe((res) =>{
-     this.produtos = res
+     this.produtos = res.filter(({ customer }) => customer.active)
      console.log(this.produtos)
     })
   }

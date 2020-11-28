@@ -21,12 +21,20 @@ export class UsuariosService extends BaseService {
   getUsuariosAtivos(){
     return this.get(`customers/usuarioAtivo`)
   }
+
   statusCliente(id, obj){
     return this.update(`customers/status/${id}`,obj)
   }
 
+  PlanoCliente(id, obj){
+    return this.update(`customers/plano/${id}`,obj)
+  }
   getEnd(obj){
     return this.getEndereco(`${obj}/json`)
+  }
+
+  deletarCliente(id){
+    return this.delete(`customers/${id}`)
   }
 
 }

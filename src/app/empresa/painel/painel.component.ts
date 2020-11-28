@@ -62,7 +62,12 @@ export class PainelComponent implements OnInit {
   }
 
   cadastrarProduto(){
-   if(this.produtos.length < 5){
+   if( 
+     this.dadosUsuario.plano == "free" && this.produtos.length < 5 ||
+     this.dadosUsuario.plano == "start" && this.produtos.length < 10 ||
+     this.dadosUsuario.plano == "plus" && this.produtos.length < 15 || 
+     this.dadosUsuario.plano == "super" && this.produtos.length < 30 ||
+     this.dadosUsuario.plano == "max" && this.produtos.length < 60    ) {
     this.sevProdutos.criarProduto(this.formProdutos.value).subscribe(
       (res: any) => {
         this.suporte.showMessage('Produto Criado com sucesso!')
