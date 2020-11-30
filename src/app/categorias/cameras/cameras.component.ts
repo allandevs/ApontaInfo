@@ -11,6 +11,7 @@ export class CamerasComponent implements OnInit {
   imagemProduto = "../assets/produto-sem-imagem.jpg"
   dados:any;
   dadosUsuario = JSON.parse(localStorage.getItem('userLogged'));
+  carregarSpinner: boolean = true
   constructor(private sevProdutos: ProdutosService) { }
 
   ngOnInit(): void {
@@ -20,6 +21,7 @@ export class CamerasComponent implements OnInit {
   getProdutosCategoria(){
     this.sevProdutos.getProdutoCategoria('Cameras').subscribe((res) =>{
      this.produtos = res.filter(({ customer }) => customer.active)
+     this.carregarSpinner = false
     })
   }
 

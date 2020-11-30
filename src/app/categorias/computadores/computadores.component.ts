@@ -13,6 +13,7 @@ imagemProduto = "../assets/produto-sem-imagem.jpg"
 dados:any
 dadosUsuario = JSON.parse(localStorage.getItem('userLogged'));
 maskTelefone = global.telmask;
+carregarSpinner: boolean = true
   constructor(private sevProdutos: ProdutosService) { }
 
   ngOnInit(): void {
@@ -23,6 +24,7 @@ maskTelefone = global.telmask;
     this.sevProdutos.getProdutoCategoria('Computadores').subscribe((res) =>{
      this.produtos = res.filter(({ customer }) => customer.active)
      console.log(this.produtos)
+     this.carregarSpinner = false
     })
   }
 

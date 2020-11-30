@@ -32,6 +32,7 @@ import {MatListModule} from '@angular/material/list';
 import { UsuariosComponent } from './admin/usuarios/usuarios.component';
 import { BuscaComponent } from './busca/busca.component';
 import { FilterPipe } from './Pipe/filter.pipe';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
@@ -70,7 +71,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     ImageCropperModule,
     TextMaskModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatProgressSpinnerModule,
 
   ],
   exports: [

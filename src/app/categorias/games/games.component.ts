@@ -11,6 +11,7 @@ export class GamesComponent implements OnInit {
   imagemProduto = "../assets/produto-sem-imagem.jpg"
   dados:any
   dadosUsuario = JSON.parse(localStorage.getItem('userLogged'));
+  carregarSpinner: boolean = true
 
   ngOnInit(): void {
     this.getProdutosCategoria()
@@ -20,6 +21,7 @@ export class GamesComponent implements OnInit {
     this.sevProdutos.getProdutoCategoria('Games').subscribe((res) =>{
      this.produtos = res.filter(({ customer }) => customer.active)
      console.log(this.produtos )
+     this.carregarSpinner = false
     })
   }
 

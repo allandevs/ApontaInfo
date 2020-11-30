@@ -1,5 +1,7 @@
 <div class="container">
-    
+  <div class="spinner" *ngIf="carregarSpinner">
+    <mat-spinner  [diameter]="30"></mat-spinner>
+  </div>
     <div class="row" >
         <div class="col-sm-4 mb-2" *ngFor="let produto of produtos">
         <div class="card">

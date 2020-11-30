@@ -12,6 +12,7 @@ export class SomComponent implements OnInit {
   imagemProduto = "../assets/produto-sem-imagem.jpg"
   dados:any
   dadosUsuario = JSON.parse(localStorage.getItem('userLogged'));
+  carregarSpinner: boolean = true
   constructor(private sevProdutos: ProdutosService) { }
 
   ngOnInit(): void {
@@ -21,6 +22,7 @@ export class SomComponent implements OnInit {
   getProdutosCategoria(){
     this.sevProdutos.getProdutoCategoria('Som').subscribe((res) =>{
      this.produtos = res.filter(({ customer }) => customer.active)
+     this.carregarSpinner = false
     })
   }
   infoLoja(id){

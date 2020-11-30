@@ -13,6 +13,7 @@ export class ConteudoComponent implements OnInit {
   public produtos
   public produtosDestaque
   public dados
+  carregarSpinner: boolean = true
   dadosUsuario = JSON.parse(localStorage.getItem('userLogged'));
   constructor(private ofertasService: OfertasService, private sevProdutos: ProdutosService ) { }
 
@@ -33,9 +34,10 @@ export class ConteudoComponent implements OnInit {
   getBuscarProdutos() {
     this.sevProdutos.getProdutos().subscribe((res) => {
      this.produtosDestaque = res.filter(({ customer }) => customer.active && customer.plano == 'super' || customer.active && customer.plano == 'max' 
+     
       );
       console.log(this.produtosDestaque)
-      
+      this.carregarSpinner = false
     });
     
   }
