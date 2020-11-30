@@ -17,6 +17,7 @@ export class UsuariosComponent implements OnInit {
  public plano
  public planoAtual
  public idUsuario
+ filtroEmpresa
  formCliente: FormGroup;
   constructor( private suporte: SuporteService,public sevUsuario: UsuariosService,private formBuilder: FormBuilder) { }
 

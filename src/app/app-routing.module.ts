@@ -27,7 +27,7 @@ const ROUTES: Routes = [
 { path: 'funciona', component: FuncionaComponent },
 
 { path: 'admin', 
-component: PainelAdminComponent,
+component: PainelAdminComponent, canActivate: [AuthGuardGuard],
 children:[
   {path: 'usuarios', component: UsuariosComponent}
 ],

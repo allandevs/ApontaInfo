@@ -22,7 +22,12 @@
       </div>
     </div>
   </div>
-
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <input type="text" placeholder="Filtrar pelo nome ou cnpj..." class="form-control mb-3" [(ngModel)]="filtroEmpresa">
+    </div>
+  </div>
+ 
     <table class="table table-striped responsive-table">
         <thead>
           <tr>
@@ -34,7 +39,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor=" let usuario of usuarios">
+          <tr *ngFor=" let usuario of usuarios | filter: [{campo: 'nameFantasia', valor: filtroEmpresa}, {campo: 'cnpj', valor: filtroEmpresa}]">
             <td>{{usuario?.nameFantasia}}</td>
             <td>{{usuario?.cnpj}}</td>
             <td>{{usuario?.plano}}</td>

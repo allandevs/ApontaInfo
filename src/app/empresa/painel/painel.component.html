@@ -28,7 +28,16 @@
         <div class="header">
             <h4>Meus Anúncios</h4>
         </div>
-        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#novoProduto">Novo Produto</button>
+        <div class="row justify-content-between">
+          <div class="col-md-2">
+            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#novoProduto">Novo Produto</button>
+          </div>
+          <div class="col-md-4 mt-3">
+            <input type="text" placeholder="Filtrar pelo nome..." class="form-control mb-3" [(ngModel)]="filtroProduto">
+          </div>
+         
+        </div>
+        
 
         <table class="table table-striped responsive-table">
             <thead>
@@ -41,7 +50,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor=" let produto of produtos">
+              <tr *ngFor=" let produto of produtos | filter: [{campo: 'title', valor: filtroProduto}]">
                 <td>{{produto.title}}</td>
                 <td>{{produto.description}}</td>
                 <td>{{produto.price | currency: 'BRL'}}</td>
@@ -174,7 +183,7 @@
           </div>
           <label for="preco">Preço</label>
           <div class="form-group">
-              <input type="number" class="form-control" id="preco"  placeholder="Ex 3779.90" formControlName="price">
+              <input type="number" class="form-control" id="preco"  placeholder="Ex 3779,90" formControlName="price">
               <small  class="form-text text-muted"></small>
           </div>
           <div class="form-group">

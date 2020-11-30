@@ -31,6 +31,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import { UsuariosComponent } from './admin/usuarios/usuarios.component';
 import { BuscaComponent } from './busca/busca.component';
+import { FilterPipe } from './Pipe/filter.pipe';
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
@@ -53,7 +54,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     SomComponent,
     PainelAdminComponent,
     UsuariosComponent,
-    BuscaComponent
+    BuscaComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -70,6 +72,9 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     MatSidenavModule,
     MatListModule
 
+  ],
+  exports: [
+    FilterPipe
   ],
   providers: [],
   bootstrap: [AppComponent]

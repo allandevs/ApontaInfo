@@ -32,7 +32,7 @@ export class ConteudoComponent implements OnInit {
 
   getBuscarProdutos() {
     this.sevProdutos.getProdutos().subscribe((res) => {
-     this.produtosDestaque = res.filter(({ customer }) => customer.active && customer.plano == 'super' || customer.plano == 'max' 
+     this.produtosDestaque = res.filter(({ customer }) => customer.active && customer.plano == 'super' || customer.active && customer.plano == 'max' 
       );
       console.log(this.produtosDestaque)
       

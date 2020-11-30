@@ -14,6 +14,7 @@ import { global} from './../shared/global'
 export class CadastroComponent implements OnInit {
   formCadastro : FormGroup;
   cnpj
+  getCnpj
   name
   nameFantasia
   senha
@@ -48,7 +49,7 @@ export class CadastroComponent implements OnInit {
       cnpj: [this.cnpj, Validators.required],
       endereco: [ this.endereco.logradouro, Validators.required],
       numero: [ '', Validators.required],
-      complemento: ['', Validators.required],
+      complemento: [''],
       bairro:[this.endereco.bairro, Validators.required],
       cidade: [this.endereco.localidade,Validators.required],
       estado: [this.endereco.uf, Validators.required],
@@ -70,8 +71,14 @@ export class CadastroComponent implements OnInit {
   
   }
   cadastrar(){
-    this.validarCNPJ(this.cnpj)
-    console.log(this.tel)
+    this.sevUsuario.getUsuarios().subscribe((result) =>{
+      this.getCnpj= result.filter(({ cnpj }) => cnpj == this.cnpj )
+      if(this.getCnpj.length == 0){
+        this.validarCNPJ(this.cnpj)
+      } else if(this.getCnpj.length != 0) {
+        this.suporte.showMessageErro('Esse CNPJ já se encontra em uso!')
+      }
+       })
   }
 
   validarCNPJ(cnpj) {
@@ -126,6 +133,8 @@ export class CadastroComponent implements OnInit {
         resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
         if (resultado != digitos.charAt(1))
               return false;
+
+              
               if(this.senha === this.repSenha){
                 this.cadastroUser.cadastrarEmpresa(this.formCadastro.value).subscribe(
 

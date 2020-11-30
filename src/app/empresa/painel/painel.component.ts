@@ -26,6 +26,7 @@ export class PainelComponent implements OnInit {
  imagem: File
  file: any
  imagemProduto; 
+ filtroProduto
  carregarBotao: boolean = true
  dadosUsuario = JSON.parse(localStorage.getItem('userLogged'));
  
@@ -112,7 +113,7 @@ export class PainelComponent implements OnInit {
     const obj = {
       active: false
     }
-    this.sevProdutos.statusProduto(produto._id,obj).subscribe((res: any)=> {
+     this.sevProdutos.statusProduto(produto._id,obj).subscribe((res: any)=> {
       this.getProdutos()
       this.suporte.showMessage('Produto desabilitado com sucesso!')
     })
@@ -126,23 +127,6 @@ export class PainelComponent implements OnInit {
         this.suporte.showMessage('Produto ativado com sucesso!')
       })
    }
-
-  
-  
- 
-    
-   
-  //  if(produto.active){
-  //   this.sevProdutos.statusProduto(produto._id).subscribe((res: any)=> {
-  //     this.getProdutos()
-  //     this.suporte.showMessage('Produto desabilitado com sucesso!')
-  //   })
-  //  }else {
-  //   this.sevProdutos.statusProduto(produto._id).subscribe((res: any)=> {
-  //     this.getProdutos()
-  //     this.suporte.showMessage('Produto ativado com sucesso!')
-  //   })
-  //  }
    
  }
   editarProduto(produto){

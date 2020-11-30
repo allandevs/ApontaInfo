@@ -82,7 +82,7 @@ Os cadastros serão liberados na hora e nossa equipe poderá fazer uma análise 
     <div class="form-row">
       <div class="col-md-5 mb-3">
         <label for="exampleInputEmail1">Endereço de email <span class="text-danger">*</span></label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Seu email" formControlName="email">
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Seu email" formControlName="email" [(ngModel)]="email">
         <small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu email, com ninguém.</small>
       </div>
       <div class="col-md-2 mb-3">
@@ -95,7 +95,7 @@ Os cadastros serão liberados na hora e nossa equipe poderá fazer uma análise 
       </div>
     </div>
   
-    <button type="submit" class="btn btn-primary" (click)="cadastrar()">Cadastrar</button>
+    <button type="submit" class="btn btn-primary"  (click)="cadastrar()">Cadastrar</button>
     <button routerLink="" class="btn btn-dark">Sair</button>
   </form>
 
