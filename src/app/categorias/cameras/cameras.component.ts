@@ -20,7 +20,7 @@ export class CamerasComponent implements OnInit {
 
   getProdutosCategoria(){
     this.sevProdutos.getProdutoCategoria('Cameras').subscribe((res) =>{
-     this.produtos = res.filter(({ customer }) => customer.active)
+     this.produtos = res.filter(({ customer }) => customer?.active)
      this.carregarSpinner = false
     })
   }

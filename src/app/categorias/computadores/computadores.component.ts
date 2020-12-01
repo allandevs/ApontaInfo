@@ -22,7 +22,7 @@ carregarSpinner: boolean = true
 
   getProdutosCategoria(){
     this.sevProdutos.getProdutoCategoria('Computadores').subscribe((res) =>{
-     this.produtos = res.filter(({ customer }) => customer.active)
+     this.produtos = res.filter(({ customer }) => customer?.active)
      console.log(this.produtos)
      this.carregarSpinner = false
     })

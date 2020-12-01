@@ -21,7 +21,7 @@ export class SomComponent implements OnInit {
 
   getProdutosCategoria(){
     this.sevProdutos.getProdutoCategoria('Som').subscribe((res) =>{
-     this.produtos = res.filter(({ customer }) => customer.active)
+     this.produtos = res.filter(({ customer }) => customer?.active)
      this.carregarSpinner = false
     })
   }

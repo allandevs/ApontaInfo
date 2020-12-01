@@ -19,7 +19,7 @@ export class GamesComponent implements OnInit {
 
   getProdutosCategoria(){
     this.sevProdutos.getProdutoCategoria('Games').subscribe((res) =>{
-     this.produtos = res.filter(({ customer }) => customer.active)
+     this.produtos = res.filter(({ customer }) => customer?.active)
      console.log(this.produtos )
      this.carregarSpinner = false
     })
