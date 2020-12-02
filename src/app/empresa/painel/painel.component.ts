@@ -74,7 +74,7 @@ export class PainelComponent implements OnInit {
         this.suporte.showMessage('Produto Criado com sucesso!')
         this.getProdutos()
       },(error) => {
-        this.suporte.showMessageErro('HOUVE UM ERRO')}
+        this.suporte.showMessageErro(error.error[0].message)}
       )
       setTimeout(()=>{ 
         window.location.reload();                   

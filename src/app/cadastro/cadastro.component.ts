@@ -143,7 +143,7 @@ export class CadastroComponent implements OnInit {
                    this.router.navigate(['login']);
                    
                 },(error) => {
-                 this.suporte.showMessageErro('HOUVE UM ERRO')})
+                 this.suporte.showMessageErro(error.error[0].message)})
               
               }else {
                 this.suporte.showMessageErro('A confirmação de senha, não confere.')

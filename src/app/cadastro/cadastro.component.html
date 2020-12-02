@@ -95,7 +95,7 @@ Os cadastros serão liberados na hora e nossa equipe poderá fazer uma análise 
       </div>
     </div>
   
-    <button type="submit" class="btn btn-primary"  (click)="cadastrar()">Cadastrar</button>
+    <button type="submit" class="btn btn-primary"  [disabled]="formCadastro.invalid"  (click)="cadastrar()">Cadastrar</button>
     <button routerLink="" class="btn btn-dark">Sair</button>
   </form>
 
