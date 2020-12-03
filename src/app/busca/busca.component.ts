@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class BuscaComponent implements OnInit {
   buscarProduto: any 
   produtosFiltrados: any;
+  produtos : any
   nomeDabusca
   dados:any
  ;
@@ -25,15 +26,25 @@ export class BuscaComponent implements OnInit {
    })
   }
 
+
   getBuscarProdutos(params) {
     this.servProdutos.getProdutos().subscribe((res) => {
-     this.produtosFiltrados = res.filter(({ title }) => title.toLowerCase().includes(params.toLowerCase())
-      );
-      console.log(this.produtosFiltrados)
-      
+     this.produtos = res.filter(({ customer }) => customer?.active)
+     this.produtosFiltrados =  this.produtos.filter(({ title }) => title.toLowerCase().includes(params.toLowerCase()))
     });
     
   }
+
+  
+  // getBuscarProdutos(params) {
+  //   this.servProdutos.getProdutos().subscribe((res) => {
+  //    this.produtosFiltrados = res.filter(({ title }) => title.toLowerCase().includes(params.toLowerCase())
+  //     );
+  //     console.log(this.produtosFiltrados)
+      
+  //   });
+    
+  // }
 
   infoLoja(id){
     this.servProdutos.getCustomer(id).subscribe((result) =>{
